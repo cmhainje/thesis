@@ -69,7 +69,7 @@ echo 'export PATH=$HOME/local/bin:$PATH' >> .bashrc # add `dice` to path
 At this point, `dice` should be installed and executable.
 
 
-# GalactICS Installationn
+# GalactICS Installation
 
 First, download and unzip the package from the internet with this code.
 
