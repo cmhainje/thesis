@@ -10,7 +10,7 @@ Current progress:
     - [ ] GalactICS (*weird compile errors*)
     - [ ] GadgetConverters (*need files*)
 - [ ] FlexCombineGalaxies (*doesn't seem to exist??*)
-- [ ] Gizmo (*need files*)
+- [x] Gizmo
 
 
 # Python and Virtual Environment
@@ -136,11 +136,14 @@ that.
 [Gizmo User Guide](http://www.tapir.caltech.edu/~phopkins/Site/GIZMO_files/gizmo_documentation.html)
 
 We download Gizmo with 
+
 ```
 git clone https://bitbucket.org/phopkins/gizmo-public.git
+cd gizmo-public
 ```
 
-Then, we compile the code with Prof. Lisanti's `Makefile` and `Makefile.systype`
-files.
+This comes with a `Template_Config.sh` file. For now, I simply copied this to
+`Config.sh` without modifications. Then, using Prof. Lisanti's `Makefile` and
+`Makefile.systype` files, we can compile GIZMO.
 
 
