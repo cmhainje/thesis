@@ -9,6 +9,9 @@ Contents:
     - GadgetConverters
 - Gizmo
 
+Note that there are `Makefile` and `makeflags` files in the `setup-files/`
+directory of this repository.
+
 
 ## Python and Virtual Environment
 
@@ -19,13 +22,14 @@ environment. Anaconda is pre-installed on Della, so we use
 
 ```
 module load anaconda3
-conda create --name <venv_name>
+conda create --name <venv_name> --python=3.7
 conda activate <venv_name>
 ```
 
 In the future, we will need to `module load anaconda3` and `conda activate
-analysis` when logging in. This should be fine for now; I'll add the packages I
-need to install when I install them.
+<venv_name>` when logging in. When in the virtual environment, you can 
+install Python packages as normal using `pip install <package>` (or `conda`,
+I guess).
 
 
 ## GalactICS Installation
@@ -40,7 +44,7 @@ unzip GalactICSPackage_Mar2019.zip
 
 ### GalactICS
 
-*[Source](https://www.dropbox.com/s/b5coije85zumzq2/GalactICSPackage_Mar2019.zip?dl=0&file_subpath=%2FGalactICSPackage_Mar2019%2FREADMES%2FGalactICSInstallationReadMe.txt)*
+[Source](https://www.dropbox.com/s/b5coije85zumzq2/GalactICSPackage_Mar2019.zip?dl=0&file_subpath=%2FGalactICSPackage_Mar2019%2FREADMES%2FGalactICSInstallationReadMe.txt)
 
 Copy the GalactICS `Makefile` and `makeflags` into
 `GalactICSPackage_Mar2019/GalactICS/src` (replacing the ones that are already
@@ -66,7 +70,18 @@ mv General/GeneralMath/matrixMath.f General/GeneralMath/MatrixMath.f
 
 At this point, copy the GadgetConverters `makeflags` and `Makefile` files into
 `GalactICSPackage_Mar2019/GadgetConverters/src`. Be sure to edit the `makeflags`
-file like we did above. Then, run `make clean`, `make`, and `make install`. 
+file as above. Next, we need to fix the Makefile in the `Bin` directory. `cd ../Bin`,
+then open `Makefile`. Add `-lm` after in the `ascii2gadget_gasIni` rule, so it 
+should look like
+
+```
+ascii2gadget_gasIni: ascii2gadget_gasIni.o
+	$(CC) $(CFLAGS) -o ascii2gadget_gasIni ascii2gadget_gasIni.o -lm
+```
+
+Then, run `make clean`, `make`, `make` and `make install`. (You have to run 
+`make` twice, because it always throws an error the first time for some reason, 
+I don't know why.) 
 
 ## Gizmo Installation
 
