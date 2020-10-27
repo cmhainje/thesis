@@ -3,9 +3,12 @@
 __pycache__/*
 deliverables/declaration.pdf
 
+*/.ipynb_checkpoints/*
+*/__pycache__/*
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.synctex.gz
 
+simulation/*/*/*
