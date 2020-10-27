@@ -22,14 +22,41 @@ environment. Anaconda is pre-installed on Della, so we use
 
 ```
 module load anaconda3
-conda create --name <venv_name> --python=3.7
+conda create --name <venv_name> python=3.7
 conda activate <venv_name>
 ```
 
-In the future, we will need to `module load anaconda3` and `conda activate
-<venv_name>` when logging in. When in the virtual environment, you can 
-install Python packages as normal using `pip install <package>` (or `conda`,
-I guess).
+In the future, we will need to do the following to get the virtual environment
+running: 
+
+```
+module load anaconda3
+conda activate <venv_name>
+``` 
+
+when logging in. When in the virtual environment, you can install Python 
+packages as normal using `pip install <package>`.
+
+```
+pip install numpy pandas scipy h5py matplotlib tqdm jupyter
+``` 
+
+On top of the standard `pip`-able packages, there are two packages for GIZMO
+analysis that we will need to install, and these were not so easy for me to
+install. Here is how I got it to work.
+
+```
+cd ~
+mkdir pypackages
+cd pypackages
+git clone https://bitbucket.org/awetzel/gizmo_analysis.git
+git clone https://bitbucket.org/awetzel/utilities.git
+cp gizmo_analysis/setup.py .
+python setup.py develop
+cp utilities/setup.py .
+python setup.py develop
+rm setup.py
+```
 
 
 ## GalactICS Installation
