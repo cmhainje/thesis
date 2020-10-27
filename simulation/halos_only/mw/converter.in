@@ -1,14 +1,14 @@
 1	1			#number of Galaxies and maximum number of components
 #Path for the GalactICS files
-/home/chainje/thesis/simulation/halos_only/mw/
+/home/chainje/thesis/simulation/halos_only/mw/galactics/
 #First Galaxy
 1				#number of components in Galaxy 1
 halo,		1
-mw_halo_only_something.out
+converter/mw_ignore.out
 #Output ascii Combined Galaxy file
-mw_halo_only_ascii.out
+converter/mw_ascii.out
 #Output ascii file with particle number/ids for separating galaxies
-mw_halo_only_partIDs.out
+converter/mw_partIDs.out
 0.		#Time
 0.		#Redshift
 0		#SFR Flag

@@ -11,4 +11,4 @@ deliverables/declaration.pdf
 *.log
 *.synctex.gz
 
-simulation/*/*/*
+simulation/*/*/output

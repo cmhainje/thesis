@@ -6,12 +6,12 @@ make veryclean
 rm -rf in.*
 
 # copy over input files
-cp -r $currentdir/in.* .
+cp -r $currentdir/galactics/in.* .
 
 # make them
 make potential
 make halo
 
 # copy results back
-cp halo $currentdir
-cp dbh.dat $currentdir
+cp halo $currentdir/galactics
+cp dbh.dat $currentdir/galactics
