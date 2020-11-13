@@ -1,14 +1,15 @@
-1	1			#number of Galaxies and maximum number of components
+1	2			#number of Galaxies and maximum number of components
 #Path for the GalactICS files
-/home/chainje/thesis/simulation/halos_only/sgr/
+/home/chainje/thesis/simulation/halos_only/sgr/galactics/
 #First Galaxy
-1				#number of components in Galaxy 1
+2				#number of components in Galaxy 1
 halo,		1
-sgr_halo_only_something.out
+disk,           2
+converter/sgr_ignore.out
 #Output ascii Combined Galaxy file
-sgr_halo_only_ascii.out
+converter/sgr_ascii.out
 #Output ascii file with particle number/ids for separating galaxies
-sgr_halo_only_partIDs.out
+converter/sgr_partIDs.out
 0.		#Time
 0.		#Redshift
 0		#SFR Flag

@@ -1,9 +1,10 @@
-1	1			#number of Galaxies and maximum number of components
+1	2			#number of Galaxies and maximum number of components
 #Path for the GalactICS files
 /home/chainje/thesis/simulation/halos_only/mw/galactics/
 #First Galaxy
-1				#number of components in Galaxy 1
+2				#number of components in Galaxy 1
 halo,		1
+disk,           2
 converter/mw_ignore.out
 #Output ascii Combined Galaxy file
 converter/mw_ascii.out

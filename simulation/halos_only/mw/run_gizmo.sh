@@ -2,7 +2,11 @@
 #SBATCH --job-name=mw_init      # create a short name for your job
 #SBATCH --nodes=1               # node count
 #SBATCH --exclusive             # fully dedicate single node 
+<<<<<<< HEAD
+#SBATCH -p physics
+=======
 #SBATCH -p all
+>>>>>>> 7307f7c4702a96cbeb178b29e96673b9f162f825
 #SBATCH --ntasks-per-node=25
 #SBATCH --cpus-per-task=1       # cpu-cores per task (>1 if multi-threaded tasks)
 #SBATCH --mem=50G               # memory for entire job

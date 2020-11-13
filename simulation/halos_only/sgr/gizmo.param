@@ -10,8 +10,13 @@
 %-------------------------------------------------------------------------
 
 %----  Relevant files (filenames and directories)
+<<<<<<< HEAD
+InitCondFile	    /home/chainje/thesis/simulation/halos_only/sgr/converter/sgr.ic
+OutputDir	    /home/chainje/thesis/simulation/halos_only/sgr/output
+=======
 InitCondFile	    /home/chainje/thesis/simulation/halos_only/sgr/sgr_halo_only_gadget.out
 OutputDir	    /home/chainje/thesis/simulation/halos_only/sgr/gizmo
+>>>>>>> 7307f7c4702a96cbeb178b29e96673b9f162f825
 
 %---- File formats (input and output)
 ICFormat                    1   % format of IC file: 1=unformatted (gadget) binary, 3=hdf5, 4=cluster
