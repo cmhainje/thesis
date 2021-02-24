@@ -10,5 +10,8 @@ deliverables/declaration.pdf
 *.fls
 *.log
 *.synctex.gz
+*.ic
+
+*/slurm-*
 
 simulation/*/*/output

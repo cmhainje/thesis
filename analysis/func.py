@@ -147,7 +147,7 @@ def create_galaxy_arrays(simulation_directory, n_dm1, n_star1, n_dm2, n_star2, t
                 GAL_DICT['dark']['velocity.cyl'] = vel_cyl_dark[ID_DM]
                 GAL_DICT['dark']['position.sph'] = pos_sph_dark[ID_DM]
                 GAL_DICT['dark']['velocity.sph'] = vel_sph_dark[ID_DM]
-                GAL_DICT['dark']['potential'] = part['dark']['potential'][ID_DM]
+#                 GAL_DICT['dark']['potential'] = part['dark']['potential'][ID_DM]
 
                 #Stellar Disk
 
@@ -159,7 +159,7 @@ def create_galaxy_arrays(simulation_directory, n_dm1, n_star1, n_dm2, n_star2, t
                 GAL_DICT['star']['velocity.cyl'] = vel_cyl_star[ID_STAR]
                 GAL_DICT['star']['position.sph'] = pos_sph_star[ID_STAR]
                 GAL_DICT['star']['velocity.sph'] = vel_sph_star[ID_STAR]
-                GAL_DICT['star']['potential'] = part['star']['potential'][ID_STAR]
+#                 GAL_DICT['star']['potential'] = part['star']['potential'][ID_STAR]
 
                 if flag1 == True:  #if gal1_dict
                     gal1.append(GAL_DICT)
@@ -167,6 +167,92 @@ def create_galaxy_arrays(simulation_directory, n_dm1, n_star1, n_dm2, n_star2, t
                     gal2.append(GAL_DICT)   
                     
     return gal1, gal2
+
+
+
+def create_galaxy_arrays_no(simulation_directory, n_dm1, n_star1, n_dm2, n_star2, time_array):
+
+    gal1=[]
+    gal2=[]
+
+    if n_star1 == 0:
+        species = ['dark']
+    else:
+        species = ['dark','star']
+
+    in_output_directory = glob.glob(simulation_directory + "/output/snapshot_*.hdf5")
+    
+    with io.capture_output() as captured:  #suppresses output
+
+        for i in range(len(in_output_directory)-1):
+            
+
+            #Read in the particles from the snapshot
+            part = gizmo.io.Read.read_snapshots(species, 'time', time_array[i], simulation_directory,
+                                                properties=['position', 'mass', 'id', 'velocity', 'potential'],
+                                                assign_hosts=True,  
+                                                assign_hosts_rotation=True, 
+                                                assign_orbits=True)
+
+            #assigns orbital properties to the dark and star particles
+            #positions and velocities relative to the COM and COV can now be found using host.distance, host.velocity
+            gizmo.io.Read.assign_orbits(part, species=species)
+
+            #we will need to divide up the dark/star particles between galaxy 1 and galaxy 2, as per true origin
+            gal1_dict = copy.deepcopy(part)
+            gal2_dict = copy.deepcopy(part)
+            
+            for p in species:
+                #Rotate position and velocity coordinates, cartesian coordinates
+                #When calculating the moment of inertia, it just looks at the particles within 5 kpc of the center
+                pos = ut.coordinate.get_coordinates_rotated(part[p]['host.distance'], part.host['rotation'][0]) 
+                vel = ut.coordinate.get_coordinates_rotated(part[p]['host.velocity'], part.host['rotation'][0]) 
+
+                #Transform from cartesian to cylindrical coordinates
+                pos_cyl = ut.coordinate.get_positions_in_coordinate_system(pos, system_from='cartesian', system_to='cylindrical')
+                vel_cyl = ut.coordinate.get_velocities_in_coordinate_system(vel, pos, system_from='cartesian', system_to='cylindrical')
+
+                #Transform from cartesian to spherical coordinates
+                pos_sph = ut.coordinate.get_positions_in_coordinate_system(pos, system_from='cartesian', system_to='spherical')
+                vel_sph = ut.coordinate.get_velocities_in_coordinate_system(vel, pos_dark, system_from='cartesian', system_to='spherical')
+
+                for key in ['host.distance', 'host.distance.total', 'host.distance.norm', 'host.velocity', 'host.velocity.total',
+                           'host.velocity.tan', 'host.velocity.rad', 'host.velocity.norm', 'host.velocity.ratio']:
+                    del gal1_dict[p][key]
+                    del gal2_dict[p][key]
+
+                if p == 'dark':
+                    haloID = part[p]['id'] <= n_dm1
+                    satID  = part[p]['id'] >  n_dm1 + n_star1
+                elif p == 'star':
+                    haloID = part[p]['id'] <= n_dm1 + n_star1
+                    satID  = part[p]['id'] >  n_dm1 + n_star1 + n_dm2
+                
+                gal1_dict[p]['position']     = pos[haloID]
+                gal1_dict[p]['velocity']     = vel[haloID]
+                gal1_dict[p]['mass']         = part[p]['mass'][haloID]
+                gal1_dict[p]['id']           = part[p]['id'][haloID]
+                gal1_dict[p]['position.cyl'] = pos_cyl[haloID]
+                gal1_dict[p]['velocity.cyl'] = vel_cyl[haloID]
+                gal1_dict[p]['position.sph'] = pos_sph[haloID]
+                gal1_dict[p]['velocity.sph'] = vel_sph[haloID]
+                gal1_dict[p]['potential']    = part[p]['potential'][haloID]
+                
+                gal2_dict[p]['position']     = pos[satID]
+                gal2_dict[p]['velocity']     = vel[satID]
+                gal2_dict[p]['mass']         = part[p]['mass'][satID]
+                gal2_dict[p]['id']           = part[p]['id'][satID]
+                gal2_dict[p]['position.cyl'] = pos_cyl[satID]
+                gal2_dict[p]['velocity.cyl'] = vel_cyl[satID]
+                gal2_dict[p]['position.sph'] = pos_sph[satID]
+                gal2_dict[p]['velocity.sph'] = vel_sph[satID]
+                gal2_dict[p]['potential']    = part[p]['potential'][satID]
+
+            gal1.append(gal1_dict)
+            gal2.append(gal2_dict)	
+                    
+    return gal1, gal2
+
     
     
 def apply_mask(ls, func, func_min_val, func_max_val):
