@@ -1,0 +1,19 @@
+\contentsline {chapter}{\numberline {1}Introduction}{2}% 
+\contentsline {section}{\numberline {1.1}Dark matter}{2}% 
+\contentsline {section}{\numberline {1.2}Standard cosmological model}{3}% 
+\contentsline {section}{\numberline {1.3}Sagittarius stream}{4}% 
+\contentsline {chapter}{\numberline {2}Self-interacting dark matter}{6}% 
+\contentsline {section}{\numberline {2.1}Motivations}{6}% 
+\contentsline {section}{\numberline {2.2}Particle physics models}{7}% 
+\contentsline {subsection}{\numberline {2.2.1}Light mediator}{7}% 
+\contentsline {subsection}{\numberline {2.2.2}Strong interactions}{8}% 
+\contentsline {chapter}{\numberline {3}Simulations}{11}% 
+\contentsline {section}{\numberline {3.1}Methodology}{11}% 
+\contentsline {section}{\numberline {3.2}CDM simulations}{12}% 
+\contentsline {subsection}{\numberline {3.2.1}Initial galaxy equilibration}{12}% 
+\contentsline {subsection}{\numberline {3.2.2}Sgr infall evolution}{14}% 
+\contentsline {section}{\numberline {3.3}SIDM simulations}{16}% 
+\contentsline {subsection}{\numberline {3.3.1}Initial galaxy equilibration}{16}% 
+\contentsline {subsection}{\numberline {3.3.2}Sgr infall evolution}{17}% 
+\contentsline {chapter}{\numberline {4}Comparison to Gaia data}{19}% 
+\contentsline {chapter}{\numberline {5}Conclusions}{20}% 

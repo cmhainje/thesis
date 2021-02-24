@@ -1,0 +1,118 @@
+\chapter{Simulations}
+\label{sec:sim}
+
+\section{Methodology}
+The following is a description of our pipeline for simulating the infall of the
+Sgr dSph into the Milky Way. 
+
+We generate the initial distributions of stellar and dark matter using a package
+called GalactICS~\cite{deg_galactics_2019}. The galaxy is modeled with a
+stellar disk and a dark matter halo. The halo mass density follows a
+Navarro-Frenk-White (NFW) distribution,~\cite{wang_equilibrium_2010} given by
+\begin{equation} \label{eq:halo_dist}
+    \rho_{\text{halo}}(r) 
+    = \frac{M_{200}}{4\pi f(c) r_{200}} \frac{cx}{r^2 (1+x)^2},
+\end{equation}
+where $M_{200}$ and $r_{200}$ are the Virial mass and radius, $c$ is the
+concentration parameter, $r$ is the spherical radius, $f(c) \equiv \ln(1+c) -
+c/(1+c)$, and $x \equiv rc/r_{200}$.
+
+The disk mass density follows the following distribution
+from~\cite{wang_equilibrium_2010}
+\begin{equation} \label{eq:disk_dist}
+    \rho_{\text{disk}}(R, z)
+    = \left( \frac{c_0^2 M_{\text{disk}}}{4\pi} \right)
+    \frac{
+        b_0 R^2 + (b_0 + 3 \sqrt{z^2 + c_0^2})(b_0 + \sqrt{z^2 + c_0^2})^2
+    }{
+        \left[ R^2 + (b_0 + \sqrt{z^2 + c_0^2})^2 \right]^{5/2}
+        (z^2 + c_0^2)^{3/2}
+    },
+\end{equation}
+where $R$ is the cylindrical radius in the plane of the disk, $z$ is the
+distance from the disk's plane, $M_{\text{disk}}$ is the mass of the disk, $b_0$
+is the disk scale-radius, and $c_0$ is the disk scale-height.
+
+Both of these density distributions are subject to truncation beyond a given
+$r_{t}$ with a width of $dr_t$, where the truncation function is given
+by~\cite{widrow_dynamical_2008}
+\begin{equation} \label{eq:trunc}
+    C(r; r_t, dr_t)
+    = \frac{1}{2}\ \text{erfc} \left( \frac{r - r_t}{\sqrt{2}
+    dr_t} \right).
+\end{equation}
+The disk and the halo have different values for $r_t$ and $dr_t$, and each
+density distribution can be multiplied by the truncation function with
+corresponding truncation parameters to obtain the ``true'' density distribution.
+
+The parameters used for the initial MW and Sgr galaxies are detailed in
+Table~\ref{tab:params}, who have compiled these results from a review of
+existing literature and simulations of their own.
+The GalactICS initial conditions are then converted to a GADGET binary initial
+conditions file for use in
+GIZMO~\cite{hopkins_gizmo_2015,springel_cosmological_2005}---the conversion is
+handled by a GalactICS subpackage. SIDM runs use a public GIZMO subpackage
+from~\cite{robles_sidm_2017}.
+
+\begin{table}
+    \centering
+    \begin{tabular}{llll}
+        \hline\hline
+        Parameter                       & & MW & Sgr dSph \\ 
+        \hline
+        Halo total mass                 & $M_{\text{halo}}$
+                                        & $1.25 \times 10^{12}$ M$_\odot$ 
+                                        & $1.3 \times 10^{10}$ M$_\odot$ \\
+        Halo concentration parameter    & $c$
+                                        & $10$ 
+                                        & $8$ \\
+        Halo Virial mass                & $M_{200}$
+                                        & $1 \times 10^{12}$ M$_\odot$
+                                        & $1 \times 10^{10}$ M$_\odot$ \\
+        Halo Virial radius              & $r_{200}$
+                                        & $206$ kpc 
+                                        & $44$ kpc \\
+        Halo scale-radius               & $r_D$
+                                        & ?? 
+                                        & ?? \\
+        Number of halo particles        & $N_{\text{halo}}$
+                                        & $1.16 \times 10^6$ 
+                                        & $1.17 \times 10^4$ \\
+        \hline
+        Disk total mass                 & $M_{\text{disk}}$
+                                        & $8.13 \times 10^{10}$ M$_\odot$ 
+                                        & $7.8 \times 10^{10}$ M$_\odot$ \\
+        Disk scale-length               & $b_0$
+                                        & $3.5$ kpc 
+                                        & $0.85$ kpc \\
+        Disk scale-height               & $c_0$
+                                        & $0.53$ kpc 
+                                        & $0.13$ kpc \\
+        Number of disk particles        & $N_{\text{disk}}$
+                                        & $2.03 \times 10^6$
+                                        & $1.95 \times 10^4$ \\ 
+        \hline\hline
+    \end{tabular}
+    \caption{Initial conditions parameters for the Milky Way (MW) and
+    Sagittarius (Sgr dSph) galaxies. Many of these values are taken from~\cite{dierickx_predicted_2017}.}
+    \label{tab:params}
+\end{table}
+
+In order to ensure that the initial galaxies are in equilibrium, we first
+evolve each galaxy for 10 Gyr using GIZMO, each at rest and centered at the
+origin. This has uncovered some surprising trends, as the mass distribution
+of the galaxies has a tendency to evolve away from the initial NFW and
+exponential distributions. Further discussion of these trends will follow in
+Chapters \ref{sec:cdm-sim} and \ref{sec:sidm-sim}.
+
+After equilibration, the final snapshots for the Milky Way and Sagittarius
+galaxies are merged. The particles from the MW are centered at the origin
+with no initial velocity. The Sagittarius galaxy is centered at $\vec{r} =
+(125, 0, 0)$ kpc, with an initial velocity of $\vec{v} = (-10, 0, 70)$
+km~s$^{-1}$. The merged snapshot is then used as an initial conditions GIZMO
+file and evolved for another 10 Gyr. Snapshots are taken approximately every
+0.1 Gyr. In most of these simulations, conditions similar to today are found
+after between 6 and 8 Gyrs of evolution.
+
+\input{tex/s4-cdm-sim}
+\input{tex/s5-sidm-sim}
