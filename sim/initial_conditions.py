@@ -64,7 +64,7 @@ def make_params(M_NFW, c, M_halo, N_halo, R_200, r_H, M_disk, N_disk, b_0, c_0, 
     sigma_h = np.sqrt((M_halo / mass_unit) / (2 * r_NFW * f(c)) * sigma_h_fudge)
     h = HaloParams(n_particles=N_halo, R_trunc=R_200, sigma_h=sigma_h, R_h=r_NFW)
 
-    d = DiskParams(n_particles=N_disk, M=round(M_disk / mass_unit, 2),
+    d = DiskParams(n_particles=N_disk, M=M_disk / mass_unit,
                    R_d=b_0, R_dtrunc=25.0, R_sigma=b_0, z_d=c_0, z_trunc=3.0, 
                    n_spline_points=disk_n_spline_points, n_iterations=disk_n_iterations)
     return h, d
@@ -97,7 +97,7 @@ class Writer:
         with open(f"{self.folder}/in.dbh", "w") as f:
         
             f.write(f"y\n  {halo.R_trunc} {halo.sigma_h} {halo.R_h} {halo.d_rtrunc} {halo.alpha} {halo.beta}\n")
-            f.write(f"y\n  {disk.M} {disk.R_d} {disk.R_dtrunc} {disk.z_d} {disk.z_trunc} 0. 0.\n")
+            f.write(f"y\n  {disk.M:f} {disk.R_d} {disk.R_dtrunc} {disk.z_d} {disk.z_trunc} 0. 0.\n")
 
             if disk2 is not None:
                 f.write(f"y\n  {disk2.M} {disk2.R_d} {disk2.R_dtrunc} {disk2.z_d} {disk2.z_trunc} 0. 0.\n")
