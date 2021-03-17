@@ -10,8 +10,8 @@
 %-------------------------------------------------------------------------
 
 %----  Relevant files (filenames and directories)
-InitCondFile	    /scratch/gpfs/chainje/test/mw/data.ic
-OutputDir	    /scratch/gpfs/chainje/test/mw/output
+InitCondFile	    /scratch/gpfs/chainje/galactics/mw/full/data.ic
+OutputDir	    /scratch/gpfs/chainje/galactics/mw/full/output
 
 %---- File formats (input and output)
 ICFormat                    1   % format of IC file: 1=unformatted (gadget) binary, 3=hdf5, 4=cluster
@@ -263,7 +263,7 @@ DarkEnergyConstantW       -1        % time-independent DE parameter w, used only
 TabulatedCosmologyFile    CosmoTbl  % table with cosmological parameters
 
 %-------------- Parameters for self-interacting dark matter (DM_SIDM on)
-DM_InteractionCrossSection    2
+DM_InteractionCrossSection    10
 DM_InteractionVelocityScale   0     % velocity [code units]: if>0, cross-section scales ~1/(1+(v/v0)^4) above this "v0"
 DM_DissipationFactor          0     % 0=elastic, 1=pure dissipative (fractional dissipation of kinetic energy in event)
 DM_KickPerCollision           0     % velocity 'kick' [code units] per collision (this^2=specific energy/mass released)

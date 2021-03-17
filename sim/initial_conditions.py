@@ -10,7 +10,7 @@ mass_unit = 2.325e9 # M_sol
 
 
 class HaloParams():
-    def __init__(self, streaming_fraction=0.5, n_particles=1160000, 
+    def __init__(self, streaming_fraction=0.5, n_particles=1160000,
         random_integer_seed=-1, center=True, datafile="dbh.dat",
         R_trunc=200.0, sigma_h=4.375, R_h=20.6, d_rtrunc=20.0, alpha=1.0, beta=3.0
     ):
@@ -28,13 +28,13 @@ class HaloParams():
         self.d_rtrunc = d_rtrunc
         self.alpha    = alpha
         self.beta     = beta
-        
+
 
 class DiskParams():
-    def __init__(self,         
+    def __init__(self,
         n_particles=2030000, random_integer_seed=-1, center=True, datafile="dbh.dat",
         M=34.95, R_d=2.7, R_dtrunc=25.0, z_d=0.36, z_trunc=3.0,
-        sigma_r=1.0, R_sigma=2.2, n_spline_points=50, n_iterations=10, dummy="psfile", 
+        sigma_r=1.0, R_sigma=2.2, n_spline_points=50, n_iterations=10, dummy="psfile",
     ):
         # in.disk params
         self.n_particles = n_particles
@@ -55,8 +55,26 @@ class DiskParams():
         self.n_spline_points = n_spline_points
         self.n_iterations = n_iterations
         self.dummy = dummy
-       
+
+
+def make_halo_params(M, N, a, NFW=True, c=None, sigma_h_fudge=2.073):
+    if NFW:
+        if c is None:
+            raise Exception("Concentration `c` must be supplied for an NFW halo.")
+        
+        f = np.log1p(c) - c / (1 + c)
+        sigma_h = np.sqrt( (M / mass_unit) / (2 * a * f) * sigma_h_fudge )
+        R_trunc = a * c
+        return HaloParams(n_particles=N, R_trunc=R_trunc, sigma_h=sigma_h, R_h=a)
+    else:
+        f = np.log1p(c) - c / (1 + c)
+        sigma_h = np.sqrt( (M / mass_unit) / (2 * a * f) * sigma_h_fudge )
+        R_trunc = a * c
+        return HaloParams(n_particles=N, R_trunc=R_trunc, sigma_h=sigma_h, R_h=a)
     
+        
+        
+        
 def make_params(M_NFW, c, M_halo, N_halo, R_200, r_H, M_disk, N_disk, b_0, c_0, M_bulge, N_bulge, a, sigma_h_fudge=2.073,
                 disk_n_spline_points=50, disk_n_iterations=10):
     r_NFW = R_200 / c # NFW scale radius
@@ -65,7 +83,7 @@ def make_params(M_NFW, c, M_halo, N_halo, R_200, r_H, M_disk, N_disk, b_0, c_0, 
     h = HaloParams(n_particles=N_halo, R_trunc=R_200, sigma_h=sigma_h, R_h=r_NFW)
 
     d = DiskParams(n_particles=N_disk, M=M_disk / mass_unit,
-                   R_d=b_0, R_dtrunc=25.0, R_sigma=b_0, z_d=c_0, z_trunc=3.0, 
+                   R_d=b_0, R_dtrunc=25.0, R_sigma=b_0, z_d=c_0, z_trunc=3.0,
                    n_spline_points=disk_n_spline_points, n_iterations=disk_n_iterations)
     return h, d
 
@@ -78,24 +96,24 @@ class Writer:
             print('Warning: `gas` not implemented.')
         if bulge is not None:
             print('Warning: `bulge` not implemented.')
-            
+
         self.halo = halo
         self.disk = disk
         self.disk2 = disk2
         self.gas = gas
         self.bulge = bulge
         self.folder = folder
-        
+
     def _write_dbh(self, smbh="n", dr="0.01", nr="50000", lmax="10"):
-        
+
         halo = self.halo
         disk = self.disk
         disk2 = self.disk2
         gas = self.gas
         bulge = self.bulge
-        
+
         with open(f"{self.folder}/in.dbh", "w") as f:
-        
+
             f.write(f"y\n  {halo.R_trunc} {halo.sigma_h} {halo.R_h} {halo.d_rtrunc} {halo.alpha} {halo.beta}\n")
             f.write(f"y\n  {disk.M:f} {disk.R_d} {disk.R_dtrunc} {disk.z_d} {disk.z_trunc} 0. 0.\n")
 
@@ -157,7 +175,7 @@ class Writer:
             f.write(f"{self.disk2.n_spline_points}\n")
             f.write(f"{self.disk2.n_iterations}\n")
             f.write(f"{self.disk2.dummy}")
-            
+
     def write(self):
         if not os.path.exists(self.folder):
             os.makedirs(self.folder)
