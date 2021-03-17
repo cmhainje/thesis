@@ -124,5 +124,5 @@ cd gizmo-public
 This comes with a `Template_Config.sh` file. For now, I simply copied this to
 `Config.sh` without modifications. Then, we copy the GIZMO `Makefile` and
 `Makefile.systype` files into the source directory, and compile in the usual way
-(`make clean`, `make`, `make install`).
+(`make clean`, `make`).
 
