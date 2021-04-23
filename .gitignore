@@ -9,9 +9,16 @@ deliverables/declaration.pdf
 *.fdb_latexmk
 *.fls
 *.log
+*.toc
+*.out
 *.synctex.gz
 *.ic
 
+deliverables/writeup/main.bbl
+deliverables/writeup/main.bcf
+deliverables/writeup/main.blg
+deliverables/writeup/main.run.xml
+
 */slurm-*
 
-simulation/*/*/output
+notes/*
