@@ -198,13 +198,12 @@ limit, the interaction is well-approximated by the Yukawa potential~\cite{tulin_
 \begin{equation}
 V(r) = \pm \frac{\alpha_\chi}{r} e^{-m_\phi r},
 \end{equation}
-where
-\(\alpha_chi \equiv g_\chi^2/4\pi\) is the dark fine structure constant. The
-\(\pm\) will be set depending on whether the interaction is attractive or
-repulsive. For a scalar \(\phi\), the potential is attractive and the sign is
-\((-)\). For vector \(\phi\), the potential is attractive \((+)\) for
-\(\chi\overline{\chi}\) scattering and repulsive \((-)\) for \(\chi\chi\) and
-\(\overline{\chi}\overline{\chi}\) scattering.
+where \(\alpha_\chi \equiv g_\chi^2/4\pi\) is the dark fine structure
+constant. The \(\pm\) will be set depending on whether the interaction is
+attractive or repulsive. For a scalar \(\phi\), the potential is attractive
+and the sign is \((-)\). For vector \(\phi\), the potential is attractive
+\((+)\) for \(\chi\overline{\chi}\) scattering and repulsive \((-)\) for
+\(\chi\chi\) and \(\overline{\chi}\overline{\chi}\) scattering.
 
 Using the Yukawa potential, we can obtain the Born differential cross section
 in the limit that \(\alpha_\chi m_\chi / m_\phi \ll 1\) to
@@ -360,7 +359,9 @@ find the core size by solving
 \end{equation}
 which gives 
 \begin{equation}
-r_c \approx \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)} = \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)} = \frac{r_0 \sigma_0^2 \ln 2}{4 V_B(r_0)^2}.
+r_c 
+\approx \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)} 
+= \frac{r_0 \sigma_0^2 \ln 2}{4 V_B(r_0)^2}.
 \end{equation}
 For a typical value of $\sigma_0$, on the order of 150 km/s, we thus obtain 
 \begin{equation}
@@ -469,6 +470,18 @@ cm$^2$/g) sets this to one scattering event per particle. As we have seen, this
 cross section is consistent with observations on the scales of galaxies and is
 capable of solving the small-scale problems.
 
+The authors specifically consider values of $\sigma_0$, $\rho_0$, and $r_1$
+that approximate the Milky Way in the case both of an NFW profile and an NFW
+profile with initial adiabatic contraction.\footnote{Adiabatic contraction is a
+description of the response of dark matter to baryonic infall, a process which
+tends to lead to higher central dark matter densities.} For these cases, they
+find that $r_1 = 15$ kpc, $\sigma_0 = 165$ kpc, and $\sigma / m = 1$ barn/GeV
+gives a good fit. In the case of a standard NFW profile, they find the central
+density to be $\rho_0 = 14$ GeV $c^{-2}$ cm$^{-3}$. When including adiabatic
+contraction, they find it to be significantly higher, at 80 GeV $c^{-2}$
+cm$^{-3}$. The expectations for the resulting density profiles are shown in
+Figure~\ref{fig:sidm_expected_density}.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.65\linewidth]{figs/kaplinghat_sidm_density.png}
@@ -483,16 +496,6 @@ capable of solving the small-scale problems.
     }
     \label{fig:sidm_expected_density}
 \end{figure}
-
-The authors specifically consider values of $\sigma_0$, $\rho_0$, and $r_1$ that
-approximate the Milky Way in the case both of an NFW profile and an NFW profile
-with initial adiabatic contraction. For these cases, they find that $r_1 = 15$
-kpc, $\sigma_0 = 165$ kpc, and $\sigma / m = 1$ barn/GeV gives a good fit. In
-the case of a standard NFW profile, they find the central density to be $\rho_0
-= 14$ GeV $c^{-2}$ cm$^{-3}$. When including adiabatic contraction, they find it
-to be significantly higher, at 80 GeV $c^{-2}$ cm$^{-3}$. The expectations for
-the resulting density profiles are shown in
-Figure~\ref{fig:sidm_expected_density}.
 
 \hypertarget{self-interaction-in-simulation}{%
 \section{Self-interaction in simulation}\label{self-interaction-in-simulation}}
