@@ -291,9 +291,6 @@ collider-specific results, in~\cite{kribs_review_2016}.
 \hypertarget{predicted-density-profile}{%
 \section{Predicted density profile}\label{predicted-density-profile}}
 
-todo run through an analytic calculation of core size, etc. 
-todo Jeans approach!
-
 In 2014, Kaplinghat et al.~\cite{kaplinghat_tying_2014} provided a
 semi-analytic approach to deriving equilibrium solutions for the dark matter
 density profile using the Jeans equation. This approach allows for the
@@ -307,22 +304,30 @@ matter density profile is given by
 \(\rho(\mathbf{r}) = \rho_0 \exp(h(\mathbf{r}))\). Plugging these in
 yields
 \begin{equation}
-\nabla_x^2 h(\mathbf{x}) + (4\pi G_N r_0^2/\sigma_0^2)
+\nabla_x^2 h(\mathbf{x}) + (4\pi G r_0^2/\sigma_0^2)
 \left[\rho_B(\mathbf{x}) + \rho_0 \exp\left(h(\mathbf{r})\right)\right] = 0,
 \end{equation}
 where we have introduced a length scale \(r_0\), a dimensionless length
 \(x = r / r_0\), and the baryonic density profile \(\rho_B\).
 
 As a simple test of this equation, we can consider the case where
-baryonic matter dominates. Then, the \(\exp(h)\) term can be neglected,
+baryonic matter dominates. Then, the $\exp(h)$ term can be neglected,
 yielding
-
-todo work through this derivation with a few more steps
-
-The solution in this case can then be written as
 \begin{equation}
-\rho(\mathbf{x}) = \rho_0 
-\exp\left[(\Phi_B(0) - \Phi_B(\mathbf{x}))/\sigma_0^2\right].
+\nabla_x^2 h(\mathbf{x}) + (4\pi G r_0^2/\sigma_0^2) \rho_B(\mathbf{x}) = 0.
+\end{equation}
+Using Poisson's equation, $4\pi G \rho(r) = \nabla_r^2 \Phi(r)$, this becomes 
+\begin{equation}
+\nabla_x^2 h(\mathbf{x}) + \frac{1}{\sigma_0^2} \nabla_x^2 \Phi(\mathbf{x}) = 0.
+\end{equation}
+Integrating over $x$ gives the solution 
+\begin{equation}
+h(\mathbf{x}) = \frac{1}{\sigma_0^2} \left(\Phi(0) - \Phi(\mathbf{x})\right),
+\end{equation}
+which corresponds to a dark matter density of 
+\begin{equation}
+\rho(\mathbf{x}) = \rho_0 \exp\left[\frac{1}{\sigma_0^2} 
+\left(\Phi(0) - \Phi(\mathbf{x})\right) \right].
 \end{equation}
 The authors then recommend defining the core radius as the radius at
 which the density is half the initial density, \(\rho_0 / 2\). Such a position
@@ -334,7 +339,160 @@ Thus, the core size would depend only on the baryonic potential in the case
 where it dominates, which follows from these assumptions but stands in marked
 contrast to observation, where the baryonic contribution does not dominate.
 
-todo finish this discussion
+At this point, the authors make the move to consider the spherically symmetric
+case. To do so, they approximate the Milky Way baryon distribution, $\rho_B$, by
+a Hernquist profile whose spherical enclosed mass distribution approximates
+the true enclosed mass distribution. The Hernquist density profile is given by 
+\begin{equation}
+\rho_B(r) = \frac{\rho_{B0}}{(r/r_0) (1 + r/r_0)^3},
+\end{equation}
+corresponding to a gravitational potential of 
+\begin{equation}
+\Phi_B(r) = - \frac{G M_B}{r + r_0},
+\end{equation}
+where $M_B$ is the total mass of baryons in the Milky Way. The free parameters
+can be set by finding $r_0$ and $\Phi_B(0)$ such that the circular velocity
+$V_B(r_0)^2 = - \Phi_B(0) / 4$ matches observation. The authors give
+$\sqrt{-\Phi_B(0)} = 365$ km/s and $r_0 = 2.7$ kpc to be a good fit. We can thus
+find the core size by solving
+\begin{equation}
+-\sigma_0^2 \ln 2 = \Phi_B(0) - \Phi_B(r_c) = \Phi_B(0) \left(1 - \frac{1}{1 + r_c/r_0}\right),
+\end{equation}
+which gives 
+\begin{equation}
+r_c \approx \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)} = \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)} = \frac{r_0 \sigma_0^2 \ln 2}{4 V_B(r_0)^2}.
+\end{equation}
+For a typical value of $\sigma_0$, on the order of 150 km/s, we thus obtain 
+\begin{equation}
+r_c \approx 0.3 \text{ kpc} 
+\left(\frac{r_0}{2.7 \text{ kpc}}\right)
+\left(\frac{\sigma_0}{150 \text{ km/s}}\right)^2
+\left(\frac{183 \text{ km/s}}{V_B(r_0)}\right)^2,
+\end{equation}
+which is quite small.
+
+Let's continue under the assumption that the Milky Way is spherically symmetric
+and that its baryon profile can be approximated by a Hernquist profile, but drop
+the assumption that baryons dominate the potential. To begin, we will rewrite
+the Jeans equation in a spherically symmetric system. First, note that
+\begin{equation}
+\frac{4\pi G r_0^2}{\sigma_0^2} \rho_B(x)
+= \frac{1}{\sigma_0^2} \nabla_x^2 \Phi_B(x)
+= \nabla_x^2 \left( \frac{\Phi_B(0)}{\sigma_0^2} \frac{1}{1 + x} \right).
+\end{equation}
+Thus, we can rewrite the Jeans equation as 
+\begin{align}
+0
+&= \nabla_x^2 \left( h(x) + \frac{\Phi_B(0)}{\sigma_0^2} \frac{1}{1 + x} \right)
+    + \frac{4\pi G \rho_0 r_0^2}{\sigma_0^2} e^{h(x)} \\
+&= \frac{1}{x^2} \frac{\partial}{\partial x} 
+    \left[ x^2 \frac{\partial}{\partial x} 
+    \left( h(x) + \frac{\Phi_B(0)}{\sigma_0^2} \frac{1}{1 + x} \right) \right]
+    + \frac{4\pi G \rho_0 r_0^2}{\sigma_0^2} e^{h(x)}.
+\end{align}
+We now introduce a new dimensionless variable, $y = x/(1+x)$. Substituting it in
+yields
+\begin{equation}
+\frac{(1-y)^4}{y^2} \frac{\partial}{\partial y} 
+    \left[ y^2 \frac{\partial}{\partial y}
+    \left( h(y) + \frac{\Phi_B(0)}{\sigma_0^2} (1 - y) \right) \right]
+    + \frac{4\pi G \rho_0 r_0^2}{\sigma_0^2} e^{h(y)} = 0.
+\end{equation}
+Simplifying, we then obtain 
+\begin{equation}
+\frac{1}{y^2} \frac{\partial}{\partial y} \left( 
+    y^2 \frac{\partial h}{\partial y} \right) 
+    - \frac{2 \Phi_B(0)}{\sigma_0^2} \frac{1}{y}
+    + \frac{4\pi G \rho_0 r_0^2}{\sigma_0^2} 
+    \frac{e^{h(y)}}{(1-y)^4} = 0.
+\end{equation}
+The authors recommend that this equation be simplified by letting $a_0$ be the
+coefficient for the $\exp(h(y))$ term and $a_1 = - \Phi_B(0) / \sigma_0^2$.
+The boundary conditions imposed on the equation are then $h(0) = 0$ and $h'(0)
+= -a_1$, which enforce a core in the center.
+
+We can then solve this equation approximately within the core by approximating
+the third term by $a_0$, equivalent to setting $y = 0$ in this term alone. The
+resulting equation has approximate solution 
+\begin{equation}
+    h(y) \approx -a_1 y - \frac{1}{6} a_0 y^2.
+\end{equation}
+In the case that baryons dominate, $a_1 \gg a_0$ and the $y^2$ term becomes
+negligible. The core radius then is given by the solution to 
+\begin{equation}
+    \frac{\ln 2}{a_1} = \frac{r_c}{r_0 + r_c},
+\end{equation}
+which is 
+\begin{equation}
+    r_c = r_0 \frac{\ln 2}{a_1 - \ln 2} \approx 
+    \frac{r_0 \sigma_0^2 \ln 2}{-\Phi_B(0)},
+\end{equation}
+the same result as we derived before. In the case that dark matter dominates,
+$a_0 \gg a_1$ and the $y$ term becomes negligible. The core radius is given by
+the solution to 
+\begin{equation}
+    \frac{6 \ln 2}{a_0} = \left(\frac{r_c}{r_0 + r_c}\right)^2,
+\end{equation}
+which is 
+\begin{equation}
+    r_c = r_0 \frac{\sqrt{6\ln 2}}{a_0 - \sqrt{6\ln 2}} \approx 
+    r_0 \sqrt{6 \ln 2 / a_0} = \sqrt{\frac{3 \ln 2 \sigma_0^2}{2 \pi G \rho_0}}.
+\end{equation}
+The authors reference an SIDM simulation of a Milky Way-sized halo with a
+resulting inner density of approximately 2.2 GeV $c^{-2}$ cm$^{-3}$. In the dark
+matter dominated limit, we thus estimate the core size to be approximately 5.5
+kpc, which is consistent with simulation. 
+
+For cases where neither baryons nor dark matter dominate, we have potentially a
+family a solution parameterized by $a_0$ and $a_1$. As a criterion for
+consistent selection, then, the authors adopt the following convention. Let
+$r_1$ be the radius at which the average dark matter particle has undergone one
+interaction. We choose the values of $a_0$ and $a_1$ such that the mass and
+total energy within $r_1$ match the values that one would have had in the
+absence of self-interactions. To compare against ``the absence of
+self-interactions,'' one can look at, for example, an NFW profile that
+approximately fits the considered galaxy.
+
+For the Milky Way, we can consider the self-interaction cross section required
+for $r_1$ to be approximately the solar radius, 8.5 kpc. The local dark matter
+density is known to be approximately 0.2 GeV $c^{-2}$ cm$^{-3}$. We can also
+estimate the age of the Milky Way to be 10 Gyr. Thus, we expect the average
+number of scatterings to be approximately
+\begin{equation}
+    \left( 0.2 \text{ GeV $c^{-2}$ cm$^{-3}$} \right)
+    \left( 150 \text{ km/s} \right)
+    \left( \sigma/m \right)
+    \left( 10 \text{ Gyr} \right).
+\end{equation}
+A self-interaction cross section of about $\sigma/m = 1$ barn/GeV (0.56
+cm$^2$/g) sets this to one scattering event per particle. As we have seen, this
+cross section is consistent with observations on the scales of galaxies and is
+capable of solving the small-scale problems.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.65\linewidth]{figs/kaplinghat_sidm_density.png}
+    \caption{%
+        Mass density distributions for a Milky Way-sized halo. The green boxes
+        show the result of a dark matter-only SIDM simulation. The thick solid
+        lines show NFW distributions, both adiabatically contracted (black)
+        and not (red). The dashed lines show the corresponding analytic SIDM
+        profiles expected from the results of the Jeans equation-based
+        formalism. This figure is reproduced from Figure 1
+        of~\cite{kaplinghat_tying_2014}.
+    }
+    \label{fig:sidm_expected_density}
+\end{figure}
+
+The authors specifically consider values of $\sigma_0$, $\rho_0$, and $r_1$ that
+approximate the Milky Way in the case both of an NFW profile and an NFW profile
+with initial adiabatic contraction. For these cases, they find that $r_1 = 15$
+kpc, $\sigma_0 = 165$ kpc, and $\sigma / m = 1$ barn/GeV gives a good fit. In
+the case of a standard NFW profile, they find the central density to be $\rho_0
+= 14$ GeV $c^{-2}$ cm$^{-3}$. When including adiabatic contraction, they find it
+to be significantly higher, at 80 GeV $c^{-2}$ cm$^{-3}$. The expectations for
+the resulting density profiles are shown in
+Figure~\ref{fig:sidm_expected_density}.
 
 \hypertarget{self-interaction-in-simulation}{%
 \section{Self-interaction in simulation}\label{self-interaction-in-simulation}}
