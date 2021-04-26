@@ -440,24 +440,30 @@ the solution to
     \frac{6 \ln 2}{a_0} = \left(\frac{r_c}{r_0 + r_c}\right)^2,
 \end{equation}
 which is 
-\begin{equation}
+\begin{equation} \label{eq:core_dm_dom}
     r_c = r_0 \frac{\sqrt{6\ln 2}}{a_0 - \sqrt{6\ln 2}} \approx 
-    r_0 \sqrt{6 \ln 2 / a_0} = \sqrt{\frac{3 \ln 2 \sigma_0^2}{2 \pi G \rho_0}}.
+    r_0 \sqrt{6 \ln 2 / a_0} = \sqrt{\frac{3 \ln 2\, \sigma_0^2}{2 \pi G \rho_0}}.
 \end{equation}
 The authors reference an SIDM simulation of a Milky Way-sized halo with a
 resulting inner density of approximately 2.2 GeV $c^{-2}$ cm$^{-3}$. In the dark
 matter dominated limit, we thus estimate the core size to be approximately 5.5
 kpc, which is consistent with simulation. 
 
-For cases where neither baryons nor dark matter dominate, we have potentially a
-family a solution parameterized by $a_0$ and $a_1$. As a criterion for
-consistent selection, then, the authors adopt the following convention. Let
-$r_1$ be the radius at which the average dark matter particle has undergone one
-interaction. We choose the values of $a_0$ and $a_1$ such that the mass and
-total energy within $r_1$ match the values that one would have had in the
-absence of self-interactions. To compare against ``the absence of
-self-interactions,'' one can look at, for example, an NFW profile that
-approximately fits the considered galaxy.
+For the case where neither baryons nor dark matter dominate, the authors give
+the following result for the core size
+\begin{equation} \label{eq:core_size}
+    r_c \approx r_0 \frac{\sqrt{1 + \frac{2 \ln 2\, a_0}{3 a_1^2}} - 1}{
+        1 + \frac{a_0}{3 a_1} - \sqrt{1 + \frac{2 \ln 2\, a_0}{3 a_1^2}} 
+    }.
+\end{equation}
+However, we have potentially a family of solutions parameterized by $a_0$ and
+$a_1$. As a criterion for consistent selection, then, the authors adopt the
+following convention. Let $r_1$ be the radius at which the average dark matter
+particle has undergone one interaction. We choose the values of $a_0$ and
+$a_1$ such that the mass and total energy within $r_1$ match the values that
+one would have had in the absence of self-interactions. To compare against
+``the absence of self-interactions,'' one can look at, for example, an NFW
+profile that approximately fits the considered galaxy.
 
 For the Milky Way, we can consider the self-interaction cross section required
 for $r_1$ to be approximately the solar radius, 8.5 kpc. The local dark matter
@@ -476,16 +482,14 @@ cross section is consistent with observations on the scales of galaxies and is
 capable of solving the small-scale problems.
 
 The authors specifically consider values of $\sigma_0$, $\rho_0$, and $r_1$
-that approximate the Milky Way in the case both of an NFW profile and an NFW
-profile with initial adiabatic contraction.\footnote{Adiabatic contraction is a
-description of the response of dark matter to baryonic infall, a process which
-tends to lead to higher central dark matter densities.} For these cases, they
-find that $r_1 = 15$ kpc, $\sigma_0 = 165$ kpc, and $\sigma / m = 1$ barn/GeV
-gives a good fit. In the case of a standard NFW profile, they find the central
-density to be $\rho_0 = 14$ GeV $c^{-2}$ cm$^{-3}$. When including adiabatic
-contraction, they find it to be significantly higher, at 80 GeV $c^{-2}$
-cm$^{-3}$. The expectations for the resulting density profiles are shown in
-Figure~\ref{fig:sidm_expected_density}.
+that approximate the Milky Way in the case that the no-self-interaction halo is
+well described by an NFW profile. They find that $r_1 = 15$ kpc, $\sigma_0 =
+165$ kpc, $\sigma / m = 1$ barn/GeV, and $\rho_0 = 14$ GeV $c^{-2}$ cm$^{-3}$
+gives a good fit. When plugged into Equation~\ref{eq:core_size}, this yields an
+expected core size of 0.43 kpc. The resulting density profiles are shown in
+Figure~\ref{fig:sidm_expected_density}. In particular, note that the dashed red
+curve (SIDM analog to the standard NFW Milky Way) attains half its central
+density at approximately 0.5 kpc, in line with the analytic expectation.
 
 \begin{figure}
     \centering
@@ -494,7 +498,8 @@ Figure~\ref{fig:sidm_expected_density}.
         Mass density distributions for a Milky Way-sized halo. The green boxes
         show the result of a dark matter-only SIDM simulation. The thick solid
         lines show NFW distributions, both adiabatically contracted (black)
-        and not (red). The dashed lines show the corresponding analytic SIDM
+        and not (red). (We focus only on the non-adiabatically contracted case
+        in this study.) The dashed lines show the corresponding analytic SIDM
         profiles expected from the results of the Jeans equation-based
         formalism. This figure is reproduced from Figure 1
         of~\cite{kaplinghat_tying_2014}.
