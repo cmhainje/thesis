@@ -18,17 +18,48 @@ are the result of a cored initial profile or from the inclusion of
 self-interactions.
 
 For each merger, the infall is simulated for 10 Gyr, with snapshots saved
-every 0.978 Gyr.  In Figure todo, we show the positions of the stars of Sgr in
-the orbital plane at several times for each merger.  Similarly, we show the
-positions of the Sgr dark matter particles in Figure todo.
+every 0.978 Gyr.  In Figure~\ref{fig:stars}, we show the positions of the
+stars of Sgr in the orbital plane at several times for each merger.
+Similarly, we show the positions of the Sgr dark matter particles in
+Figure~\ref{fig:darks}.
 
-todo Figure: sgr stars for all three mergers at t = 0, 3, 6, 9
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figs/stars.pdf}
+    \caption{%
+        Positions of Sgr stellar particles at various time stamps in evolution
+        for all three of the considered mergers. Each column denotes a
+        different time; each row a different merger.
+    }
+    \label{fig:stars}
+\end{figure}
 
-todo Figure: same but with DM
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figs/darks.pdf}
+    \caption{%
+        Positions of Sgr dark matter particles at various time stamps in
+        evolution for all three of the considered mergers. Each column denotes a
+        different time; each row a different merger.
+    }
+    \label{fig:darks}
+\end{figure}
 
-Even from these plots, some differences appear to emerge.
+Even from these plots, there are some interesting patterns to note. First, we
+notice the development of a winding stream structure much like that reported
+in~\cite{dierickx_predicted_2017} by around 6 to 7 Gyr in all three cases. We
+can also note that the CDM/core and CDM/cusp are rather similar. There are some
+discernible differences, but the general shape and size of the stream structure
+is fairly similar throughout. 
 
-todo talk more about this
+There are quite marked differences between the SIDM and CDM cases, however.
+The stream arms appear to be slightly rotated clockwise relative to the CDM
+mergers, and the general shape of the inner structure is very different. These
+differences are even more apparent when looking at the distribution of dark
+matter. In the CDM mergers, the dark matter distribution appears to roughly
+trace out the distribution of the stream. In the SIDM merger, however, the dark
+matter distribution largely loses the shape of the stream, instead collapsing
+inward toward the MW center.
 
 \hypertarget{identifying-the-sgr-progenitor}{%
 \section{Identifying the Sgr
@@ -218,7 +249,31 @@ The resulting data are shown in Figure~\ref{fig:all}.
     \label{fig:all}
 \end{figure}
 
-todo discuss what this plot means!
+The plots in this figure are evidence that SIDM microphysics may indeed have a
+profound impact on the resulting trajectory of the Sgr satellite.  One
+difference can be see in that the number of bound particles decreases much
+more substantially at early times than either of the two CDM runs.  This could
+be explained by considering that self-interactions provide a mechanism for
+dark matter to free itself from shallow gravitational potential wells to which
+collisionless dark matter would remain confined.
+
+Looking at the MW-Sgr separation over time, it is immediately evident that the
+cored profile yields a slightly longer orbital period, given the slowly
+increasing distance between the apo- and pericenters of the CDM/cusp and
+CDM/core orbits.  The inclusion of self-interactions appears to add to this
+effect, with the CDM/cusp attaining six pericenters before the SIDM orbit is
+able to reach a fifth.
+
+One phenomenon showcased by the separation curves which is difficult to
+understand is the lack of a consistent decay in the apocenters. We compare to
+figure 6 of~\cite{dierickx_predicted_2017}, which shows a steadily decreasing
+pericenter.  This is the expected behavior; as the Sgr progenitor orbits and
+decays, we would expect it to lose energy and steadily fall inward.  This,
+however, does not appear in our plots.  In fact, this phenomenon is
+exacerbated in the SIDM merger, where the apocenter actually appears to
+\textit{grow} after around 4 Gyr, reaching nearly 130 kpc at the 6 Gyr mark.
+The mechanism by which this would occur is not yet understood.
+
 
 \hypertarget{comparison-to-stream-data}{%
 \section{Comparison to stream data}\label{comparison-to-stream-data}}
