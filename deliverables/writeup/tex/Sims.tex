@@ -18,31 +18,22 @@ are the result of a cored initial profile or from the inclusion of
 self-interactions.
 
 For each merger, the infall is simulated for 10 Gyr, with snapshots saved
-every 0.978 Gyr.  In Figure~\ref{fig:stars}, we show the positions of the
+every 0.978 Gyr.  In Figure~\ref{fig:inits}, we show the positions of the
 stars of Sgr in the orbital plane at several times for each merger.
 Similarly, we show the positions of the Sgr dark matter particles in
-Figure~\ref{fig:darks}.
+% Figure~\ref{fig:darks}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\linewidth]{figs/stars.pdf}
+    \includegraphics[width=0.9\linewidth]{figs/stars_bw.png}
+    \includegraphics[width=0.9\linewidth]{figs/darks_bw.png}
     \caption{%
-        Positions of Sgr stellar particles at various time stamps in evolution
-        for all three of the considered mergers. Each column denotes a
-        different time; each row a different merger.
+        Positions of Sgr stellar (top three rows) and dark matter (bottom
+        three rows) particles at various times for all three of the considered
+        mergers.  Each column denotes a different time; each row a different
+        merger.
     }
-    \label{fig:stars}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{figs/darks.pdf}
-    \caption{%
-        Positions of Sgr dark matter particles at various time stamps in
-        evolution for all three of the considered mergers. Each column denotes a
-        different time; each row a different merger.
-    }
-    \label{fig:darks}
+    \label{fig:inits}
 \end{figure}
 
 Even from these plots, there are some interesting patterns to note. First, we
@@ -60,6 +51,24 @@ matter. In the CDM mergers, the dark matter distribution appears to roughly
 trace out the distribution of the stream. In the SIDM merger, however, the dark
 matter distribution largely loses the shape of the stream, instead collapsing
 inward toward the MW center.
+
+We can also look at the density of particles in the orbital plane by performing
+a two-dimensional histogram on the data in Figure~\ref{fig:inits}.  The result
+is shown in Figure~\ref{fig:densities}.  The densities are integrated over the
+axis perpendicular to the orbital plane.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth]{figs/density_stars.png}
+    \includegraphics[width=0.9\linewidth]{figs/density_darks.png}
+    \caption{%
+        Two-dimensional density histogram of the stellar (top three rows) and
+        dark matter (bottom three rows) Sgr particles at various times for
+        each considered merger.  Densities are integrated over the axis
+        perpendicular to the orbital plane.
+    }
+    \label{fig:densities}
+\end{figure}
 
 \hypertarget{identifying-the-sgr-progenitor}{%
 \section{Identifying the Sgr
@@ -278,4 +287,38 @@ The mechanism by which this would occur is not yet understood.
 \hypertarget{comparison-to-stream-data}{%
 \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
-comparison to streamfinder data
+The last piece of the analysis that we will consider is a comparison to observed
+data.  The data we will compare against comes from the second data release
+(DR2) of the \textit{Gaia}
+mission~\cite{lindegren_gaia_2018,gaia_collaboration_gaia_2018}, from which Sgr
+stars have been identified by Ibata et al.~\cite{ibata_panoramic_2020} using the
+\verb|STREAMFINDER|
+algorithm~\cite{malhan_streamfinder_2018,malhan_ghostly_2018}. The resulting
+dataset includes the \textit{Gaia} equatorial coordinates, proper motions,
+magnitudes, and colors of 263,438 stars, along with an estimate of the distance
+provided by the algorithm. They find their dataset to agree well with the Law
+and Majewski 2010 model~\cite{law_sagittarius_2010}, barring a few small
+deviations.
+
+In~\cite{dierickx_predicted_2017}, the simulation was found to most closely
+approximate the position of Sgr today at the fifth pericenter.  As such, we
+consider the corresponding times in our mergers.  In our mergers, we find the
+fifth pericenter to occur after 7.0 Gyr in the CDM/cusp merger, 7.4 Gyr in the
+CDM/core merger, and 8.8 Gyr in the SIDM merger.
+
+introduce the plot
+
+\begin{figure}
+    \centering 
+    \includegraphics[width=1.0\linewidth]{figs/equatorial_streamfinder.png}
+    \caption{%
+        Equatorial coordinates for Sgr stellar particles at the time of the
+        fifth pericenter for each merger. The density of STREAMFINDER particles
+        is also shown in gray.
+    }
+    \label{fig:equatorial}
+\end{figure}
+
+talk about the plot
+
+

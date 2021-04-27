@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass[12pt,oneside]{book}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -8,6 +8,7 @@
 \usepackage{booktabs}
 \usepackage{graphicx}
 \usepackage{caption,subcaption}
+\usepackage{setspace}
 
 \DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
 \DeclareUnicodeCharacter{039B}{\ensuremath{\Lambda}}
@@ -29,13 +30,15 @@
 
 \maketitle
 
-\begin{abstract}
-    todo
-\end{abstract}
+% \begin{abstract}
+%     todo
+% \end{abstract}
 
 \tableofcontents 
 
 \newpage
+
+\onehalfspacing
 
 \include{tex/Lambda-CDM}
 \include{tex/SIDM}

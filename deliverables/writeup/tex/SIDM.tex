@@ -34,7 +34,7 @@ on the distribution of dark matter.
 \end{enumerate}
 
 One other feature of the model is that the dark matter scattering rate is
-naturally dependent on the dark matter density. 
+naturally dependent on the dark matter density. todo finish this thought
 
 Shortly thereafter began a wave of numerical simulations to test these
 predictions. The results of these simulations were mixed. Some were focused on
@@ -302,17 +302,52 @@ inclusion of the gravitational potential of both the dark matter and baryons,
 providing the means to make predictions about the effects of baryons on the
 dark matter distribution.
 
-They begin with the Jeans equation, rewritten via Poisson's equation.
-They assume constant velocity dispersion \(\sigma_0\) and that the dark
-matter density profile is given by
-\(\rho(\mathbf{r}) = \rho_0 \exp(h(\mathbf{r}))\). Plugging these in
-yields
+The discussion begins with the time-independent Jeans equation, e.g.~Equation
+4.209 of~\cite{binney_galactic_2008}, which is 
+\begin{equation}
+    - \overline{v}_j \frac{\partial (\nu \overline{v}_i)}{\partial r_i} 
+    = - \nu \frac{\partial \Phi_{\text{tot}}}{\partial r_j} 
+    - \frac{\partial (\nu \sigma_{ij}^2)}{\partial r_j},
+\end{equation}
+where $\nu$ is the number density, $\overline{\mathbf{v}}$ is the mean
+velocity, and $\Phi_{\text{tot}}$ is the total gravitational potential.  We
+assume that the velocity dispersion is a constant $\sigma_0$, and that the
+time required for dark matter to attain equilibrium through self-scattering is
+long, which allows us to neglect the self-scattering term (on the left side of
+the equation).  We can also write the equation in terms of the mass density
+$\rho$ instead of the number density $\nu$, as $\rho \propto \nu$.  With these
+assumptions, the equation becomes
+\begin{equation}
+    \rho \nabla_r \Phi_{\text{tot}}(\mathbf{r}) + \sigma_0^2 \nabla_r
+    \rho(\mathbf{r}) = 0.
+\end{equation}
+We can divide through by $\rho$ and recognize that $\nabla \rho / \rho = \nabla
+(\ln \rho)$, yielding 
+\begin{equation}
+    \sigma_0^2 \nabla_r (\ln \rho(\mathbf{r})) + \nabla_r
+    \Phi_{\text{tot}}(\mathbf{r}) = 0.
+\end{equation}
+We then take the derivative of the entire equation.  At this point, we can
+introduce a length scale $r_0$ and corresponding dimensionless length
+$\mathbf{x} = \mathbf{r} / r_0$.
+\begin{equation}
+    \sigma_0^2 \nabla_x^2 (\ln \rho(\mathbf{x})) + \nabla_x^2
+    \Phi_{\text{tot}}(\mathbf{x}) = 0.
+\end{equation}
+Now we can use Poisson's equation, $\nabla_x^2 \Phi_{\text{tot}}(\mathbf{x}) =
+r_0^2 \nabla_r^2 \Phi_{\text{tot}}(\mathbf{r}) = 4 \pi G r_0^2
+\rho_{\text{tot}}(\mathbf{r})$.  Letting the dark matter density be $\rho$ and
+the baryon density be $\rho_B$, this yields
+\begin{equation}
+    \nabla_x^2 (\ln \rho(\mathbf{x})) + (4 \pi G r_0^2/\sigma_0^2) \left[ \rho_B (\mathbf{x}) + \rho(\mathbf{x}) \right] = 0.
+\end{equation}
+Now, for convenience, we introduce a function $h(\mathbf{x}) = \ln
+\rho(\mathbf{x})$ such that $\rho(\mathbf{x}) = \rho_0 \exp(h(\mathbf{x}))$.
+The result is given by Equation 1 in~\cite{kaplinghat_tying_2014}, here
 \begin{equation}
 \nabla_x^2 h(\mathbf{x}) + (4\pi G r_0^2/\sigma_0^2)
-\left[\rho_B(\mathbf{x}) + \rho_0 \exp\left(h(\mathbf{r})\right)\right] = 0,
+\left[\rho_B(\mathbf{x}) + \rho_0 \exp\left(h(\mathbf{x})\right)\right] = 0,
 \end{equation}
-where we have introduced a length scale \(r_0\), a dimensionless length
-\(x = r / r_0\), and the baryonic density profile \(\rho_B\).
 
 As a simple test of this equation, we can consider the case where
 baryonic matter dominates. Then, the $\exp(h)$ term can be neglected,
@@ -320,24 +355,25 @@ yielding
 \begin{equation}
 \nabla_x^2 h(\mathbf{x}) + (4\pi G r_0^2/\sigma_0^2) \rho_B(\mathbf{x}) = 0.
 \end{equation}
-Using Poisson's equation, $4\pi G \rho(r) = \nabla_r^2 \Phi(r)$, this becomes 
+We use Poisson's equation to rewrite $\rho_B$ in terms of the baryonic
+gravitational potential $\Phi_B$,
 \begin{equation}
-\nabla_x^2 h(\mathbf{x}) + \frac{1}{\sigma_0^2} \nabla_x^2 \Phi(\mathbf{x}) = 0.
+\nabla_x^2 h(\mathbf{x}) + \frac{1}{\sigma_0^2} \nabla_x^2 \Phi_B(\mathbf{x}) = 0.
 \end{equation}
 Integrating over $x$ gives the solution 
 \begin{equation}
-h(\mathbf{x}) = \frac{1}{\sigma_0^2} \left(\Phi(0) - \Phi(\mathbf{x})\right),
+h(\mathbf{x}) = \frac{1}{\sigma_0^2} \left(\Phi_B(0) - \Phi_B(\mathbf{x})\right),
 \end{equation}
 which corresponds to a dark matter density of 
 \begin{equation}
 \rho(\mathbf{x}) = \rho_0 \exp\left[\frac{1}{\sigma_0^2} 
-\left(\Phi(0) - \Phi(\mathbf{x})\right) \right].
+\left(\Phi_B(0) - \Phi_B(\mathbf{x})\right) \right].
 \end{equation}
 The authors then recommend defining the core radius as the radius at
 which the density is half the initial density, \(\rho_0 / 2\). Such a position
 would give \(h(\mathbf{r}_c) = -\ln 2\), or
 \begin{equation}
-\Phi(0) - \Phi(\mathbf{r}_c) = -\sigma_0^2 \ln 2.
+\Phi_B(0) - \Phi_B(\mathbf{r}_c) = -\sigma_0^2 \ln 2.
 \end{equation}
 Thus, the core size would depend only on the baryonic potential in the case
 where it dominates, which follows from these assumptions but stands in marked
