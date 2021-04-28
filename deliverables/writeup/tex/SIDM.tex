@@ -13,9 +13,9 @@ on the distribution of dark matter.
 
 \begin{enumerate}
     \item Self-interactions in regions of high density would cause dark matter
-    particles to be unbound, reducing the density of halos primarily in their
-    center region. This would yield a cored density profile rather than a
-    cuspy one, solving the core-cusp problem.
+    particles to come unbound, reducing the density of halos primarily in
+    their center region.  This would yield a cored density profile rather than
+    a cuspy one, solving the core-cusp problem.
 
     \item It is also expected that interactions would yield a more isotropic
     velocity dispersion than seen in CDM as well as erase the typical triaxial
@@ -25,16 +25,15 @@ on the distribution of dark matter.
     \item Through the processes of isotropizing the velocity dispersion and
     reducing density in core regions, it was also expected that substructure
     would be greatly reduced, lowering the number of dwarf galaxies and
-    thereby solving the missing satellites problem. However, since the dark
-    matter scattering rate would be naturally dependent on the dark matter
-    density, these effects would only be expected in higher density regions.
-    Toward the outermost radii of halos and on larger scales, the effects of
-    self-interaction would be negligible, preserving the large-scale successes
-    of the \(\Lambda\)CDM model.
+    thereby solving the missing satellites problem.
 \end{enumerate}
 
 One other feature of the model is that the dark matter scattering rate is
-naturally dependent on the dark matter density. todo finish this thought
+naturally dependent on the dark matter density. This means that one expects the
+effects of self-interaction to be neglible toward the outermost radii of halos
+and on larger scales, where $\Lambda$CDM predictions are consistent with
+observations. As such, SIDM is able to successfully preserve the large-scale
+successes of the $\Lambda$CDM model.
 
 Shortly thereafter began a wave of numerical simulations to test these
 predictions. The results of these simulations were mixed. Some were focused on
@@ -64,7 +63,7 @@ these constraints significantly, improving the viability of the model and once
 again sparking interest in self-interactions. Examples
 include~\cite{rocha_cosmological_2013,peter_cosmological_2013,zavala_constraining_2013,elbert_core_2015}.
 These newer, better simulations revised the previous constraints and generally
-show that cross sections on the order of $\sigma / m \sim 0.1$ to 10
+show that cross sections on the order of $\sigma / m \sim 0.1$ to 5
 cm$^2$/g are viable and consistent with observation. Of particular relevance
 for this thesis is \cite{rocha_cosmological_2013}, which put forth a novel
 method for computing the effects of self-interactions in N-body simulation.
@@ -79,7 +78,9 @@ Specifically, all data (spiral galaxies and both applications of the
 too-big-to-fail problem) indicate that the small-scale cross-section ought to
 be $\gtrsim 0.5$ to 1 cm$^2/g$, but the larger-scale cross section ought to be
 $\sim 0.1$ cm$^2$/g or smaller. This rules out any particle models we find
-with a velocity-independent cross section.
+with a velocity-independent cross section from being able to solve the
+small-scale problems. However, such models may serve as good approximations in a
+régime where the cross section does not vary much.
 
 \begin{table}
     \centering
@@ -132,9 +133,6 @@ with a velocity-independent cross section.
 \end{table}
 
 todo add one of those plots that shows it changing slowly for galactic scales
-
-todo add a discussion of what different kinds of astrophysical observations
-might mean different things about the particle physics properties
 
 \hypertarget{particle-physics-models}{%
 \section{Particle physics models}\label{particle-physics-models}}
@@ -617,5 +615,5 @@ elastic scattering which is isotropic in the center of mass frame.
 
 More details are presented in~\cite{rocha_cosmological_2013}, including the
 derivation of the scattering rate formula from the Boltzmann equation. We use
-the implementation which is packaged with the publicly-available GIZMO
-simulation suite.
+the implementation which is packaged with the publicly-available
+GIZMO~\cite{hopkins_new_2015} simulation suite.

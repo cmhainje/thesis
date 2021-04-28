@@ -90,6 +90,7 @@ differences for the specific time stamps of each merger which most closely
 approximate Sgr today. Determining this requires mapping the position of the Sgr
 progenitor, however.
 
+
 \hypertarget{identifying-the-sgr-progenitor}{%
 \section{Identifying the Sgr
 progenitor}\label{identifying-the-sgr-progenitor}}
@@ -196,8 +197,8 @@ One possible reason that it becomes too aggressive is because the actual
 size of the progenitor is not monitonically decreasing.  Rather, its size
 fluctuates over the course of the orbit, becoming quite compressed and small
 near the pericenter and a bit more spread out and large near the apocenter.
-These effects are modeled by the King formula for the tidal radius (todo cite
-King) as given in~\cite{dierickx_predicted_2017}:
+These effects are modeled by the King formula for the tidal
+radius~\cite{king_structure_1962} as given in~\cite{dierickx_predicted_2017}:
 \begin{equation} \label{eq:king_radius}
     r_t = r \left[ \frac{1}{2} 
     \frac{M_{\text{Sgr}(<r_t)}}{M_{\text{MW}(<r)}} \right]^{1/3},
@@ -302,6 +303,12 @@ exacerbated in the SIDM merger, where the apocenter actually appears to
 \textit{grow} after around 4 Gyr, reaching nearly 130 kpc at the 6 Gyr mark.
 The mechanism by which this would occur is not yet understood.
 
+Future studies would do well to explore other algorithms for identifying the Sgr
+progenitor, such as a friends-of-friends (FOF) halo-finder. These difficulties
+would also likely be alleviated by greater stellar resolution through the use of
+more stellar particles and the inclusion of a stellar bulge. 
+
+
 \hypertarget{time-of-closest-match}{%
 \section{Time of closest match}\label{time-of-closest-match}}
 
@@ -352,8 +359,12 @@ We note that the Dierickx 2017 model~\cite{dierickx_predicted_2017} most closely
 approximated the observed coordinates just after its fifth pericenter. We note
 that no snapshot of our model comes as close to these coordinates as theirs, but
 we believe that this discrepancy would be alleviated somewhat by greater time
-resolution in the snapshots of the stream.
-
+resolution in the snapshots of the stream. We do, however, find that the CDM
+mergers attain their closest matches to the distance and radial velocity of Sgr
+just after the fifth pericenter. The SIDM merger, however, attains its closest
+match to the distance and radial velocity after its fourth apocenter. These
+correspond to the specific times of 7.14 Gyr, 7.53 Gyr, and 6.75 Gyr for the
+CDM/cusp, CDM/core, and SIDM mergers respectively.
 
 
 \hypertarget{comparison-to-stream-data}{%
