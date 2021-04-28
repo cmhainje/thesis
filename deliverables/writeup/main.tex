@@ -13,12 +13,14 @@
 \DeclareUnicodeCharacter{0394}{\ensuremath{\Delta}}
 \DeclareUnicodeCharacter{039B}{\ensuremath{\Lambda}}
 \DeclareUnicodeCharacter{03A9}{\ensuremath{\Omega}}
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
 
 \usepackage[backend=biber, bibencoding=utf8, sorting=none]{biblatex}
 \addbibresource{refsdm.bib}
 \addbibresource{refssidm.bib}
 \addbibresource{refssgr.bib}
 \addbibresource{refssetup.bib}
+\addbibresource{refssims.bib}
 
 \usepackage{hyperref}
 
@@ -30,14 +32,24 @@
 
 \maketitle
 
+\onehalfspacing
+\pagenumbering{roman}
+
+\chapter*{Abstract}
+
+todo
+
+\newpage
+
 % \begin{abstract}
 %     todo
 % \end{abstract}
 
+\singlespacing
 \tableofcontents 
-
 \newpage
 
+\pagenumbering{arabic}
 \onehalfspacing
 
 \include{tex/Lambda-CDM}
