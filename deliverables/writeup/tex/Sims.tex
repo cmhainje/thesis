@@ -221,7 +221,7 @@ in Figure~\ref{fig:fixed_both}.
     \includegraphics[width=0.9\linewidth]{figs/fixed_both.pdf}
     \caption{%
         Results of using the ``fixed stripping radius'' progenitor-identifying
-        algorithm on the all particles in the CDM/cusp merger data. Plots and
+        algorithm on all the particles in the CDM/cusp merger data. Plots and
         legend entries have the same meaning as in
         Figure~\ref{fig:fixed_star}.
     }
@@ -284,8 +284,6 @@ would also likely be alleviated by greater stellar resolution through the use of
 more stellar particles and the inclusion of a stellar bulge. 
 
 
-% \hypertarget{time-of-closest-match}{%
-% \section{Time of closest match}\label{time-of-closest-match}}
 \hypertarget{comparison-to-stream-data}{%
 \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
@@ -354,10 +352,11 @@ We can also use our progenitor-identifying algorithm to obtain estimates of the
 times at which each stellar particle comes unbound from the progenitor. We can
 thus look at the line-of-sight velocity and heliocentric distance for each star
 of the mergers at their respective fifth pericenters, colored according to their
-stripping time. We choose to use the fifth pericenter for the SIDM merger as
-well because it gives the best agreement with the observed distance and
-line-of-sight velocity at late times, despite poorer agreement with the other
-dimensions.  This is shown in Figure~\ref{fig:vel_v_dist}.
+stripping time.  Note that any particles which are still bound at the time of
+the snapshot are colored black.  We choose to use the fifth pericenter for the
+SIDM merger as well because it gives the best agreement with the observed
+distance and line-of-sight velocity at late times, despite poorer agreement
+with the other dimensions.  This is shown in Figure~\ref{fig:vel_v_dist}.
 
 \begin{figure}
     \centering
@@ -375,17 +374,16 @@ dimensions.  This is shown in Figure~\ref{fig:vel_v_dist}.
     \label{fig:vel_v_dist}
 \end{figure}
 
-The resulting Figure gives a strong indication that the SIDM stream is indeed
-unable to adequately reproduce the observed line-of-sight velocity of Sgr. In
-particular, we note that both CDM mergers display a number of bound (colored
-dark) particles which roughly surround the observed coordinates.  The SIDM
-merger, however, shows that all bound particles either have too small a
-line-of-sight velocity or too large a heliocentric distance to yield the
-observed progenitor coordinates. We note further that this discrepancy is very
-significant with respect to the uncertainties in the measured coordinates.
+The resulting Figure gives a strong indication that the simulated SIDM
+progenitor is indeed unable to adequately reproduce the observed line-of-sight
+velocity of Sgr.  In particular, we note that both CDM mergers display a
+number of bound (colored dark) particles which roughly surround the observed
+coordinates.  The SIDM merger, however, shows that all bound particles either
+have too small a line-of-sight velocity or too large a heliocentric distance
+to yield the observed progenitor coordinates.  We note further that this
+discrepancy is very significant with respect to the uncertainties in the
+measured coordinates.
 
-% \hypertarget{comparison-to-stream-data}{%
-% \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
 \hypertarget{stream-shape}{%
 \subsection{Stream shape}\label{stream-shape}}
@@ -428,7 +426,7 @@ shown in gray.
     \caption{%
         Equatorial coordinates for our simulated Sgr stellar particles of
         distances less than 100 kpc at the time of the fifth pericenter for
-        each mergeri, colored by line-of-sight velocity.  The position of the
+        each merger, colored by line-of-sight velocity.  The position of the
         simulated progenitor is shown by a white circle with black outline.
         (Note that it is located at RA $\approx 0.5^\circ$ in the CDM/core
         plots.) The observed coordinates of Sgr are shown as a black circle.
@@ -468,15 +466,16 @@ the \verb|SF| dataset does not come with radial velocities; as such, we choose
 to use another dataset for this comparison.
 
 
-\hypertarget{twomass}{\subsection{2MASS M-giants}\label{twomass}}
+\hypertarget{twomass}{%
+\subsection{2MASS M-giants}\label{twomass}}
 
 The final comparison we will make is with M-giant stars from the Two Micron All
 Sky Survey (2MASS) as identified by Majewski et al.~\cite{majewski_two_2003}.
 There are significantly fewer stars in this dataset (only 202), but they all
 include line-of-sight velocity and heliocentric distance information, allowing
 us to directly compare these quantities with our simulated streams. We note
-further that these stars explicitly correspond to the leading and trailing arms
-of Sgr, not the progenitor.
+further that these stars explicitly correspond to the leading and trailing
+stream arms of Sgr, not the progenitor.
 
 We begin with a full comparison of our three simulated streams against the 2MASS
 data in terms of right ascension, declination, heliocentric distance, and
@@ -502,20 +501,25 @@ almost entirely reproduced by the CDM streams, with fairly good agreement in
 terms of line-of-sight velocity and heliocentric distance. The SIDM stream,
 however, gives a much poorer reproduction of the 2MASS stream. Most prominently,
 at right ascensions near $200^\circ$, the corresponding declinations are all
-significantly greater than the 2MASS data.
+significantly greater than the 2MASS data, exactly as was seen with the
+\verb|SF| stream.
 
 We next compare our data to specifically the heliocentric distances and
 line-of-sight velocities by reproducing Figure~\ref{fig:vel_v_dist} with the
 2MASS data overlaid. The result is shown in Figure~\ref{fig:vel_v_d_2mass}.
+Again, we note that still-bound particles are colored black, and unbound
+particles are colored according to the time when they came unbound.
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\linewidth]{figs/vel_v_dist_2mass.png}
     \caption{%
         Line-of-sight velocity versus heliocentric distance for each of the
-        three mergers at their respective fifth pericenters. The blue star
-        denotes the observed distance and velocity; the green squares denote
-        data from 2MASS M-giant stars. 
+        three mergers at their respective fifth pericenters with particles
+        colored according to the time they came unbound (or black if they were
+        still bound at the considered snapshot).  The blue star denotes the
+        observed distance and velocity; the green squares denote data from
+        2MASS M-giant stars.
     }
     \label{fig:vel_v_d_2mass}
 \end{figure}
@@ -526,16 +530,22 @@ features of the 2MASS data at small heliocentric distances, including the
 distances of the closest stars.  The CDM/cusp merger is the next most accurate
 in this region, with its closest stars being only a small amount ($\sim 5$
 kpc) farther away than given by 2MASS data.  The SIDM merger again has the
-worst agreement of the mergers, with very few stars at small heliocentric
-distances and low line-of-sight velocities.
+worst agreement of the mergers, with very few stars in the region of small
+heliocentric distance and low line-of-sight velocity.
 
 These plots give more evidence to believe that the distribution of
 line-of-sight velocities in simulations of the Sgr stream can prove to show
 important differences between the CDM and SIDM dark matter models. In
-particular, we have seen that our CDM models are generally able to reproduce
-the Sgr stream more faithfully than can the corresponding SIDM model.
+particular, our SIDM model appears to be significantly less able to accurately
+reproduce the line-of-sight velocities of the Sgr progenitor and stream.
 
-todo round out this thought
+More generally, however, we find our CDM models are able to more faithfully
+reproduce the observed qualities of Sgr than can our considered SIDM model.
+To show that this trend holds more generally of dark matter self-interaction,
+further studies are required.  We note in particular that we have considered a
+rather large velocity-independent cross section ($\sigma/m = 10$ cm$^2$/g) and
+have not varied the initial system parameters beyond what is done in the
+Dierickx model.
 
 
 % There also exist some differences between the three mergers in this frame.

@@ -15,7 +15,7 @@
 \DeclareUnicodeCharacter{03A9}{\ensuremath{\Omega}}
 \DeclareUnicodeCharacter{2212}{\ensuremath{-}}
 
-\usepackage[backend=biber, bibencoding=utf8, sorting=none]{biblatex}
+\usepackage[backend=biber,bibencoding=utf8,sorting=none,style=phys, maxbibnames=3]{biblatex}
 \addbibresource{refsall.bib}
 
 \usepackage{hyperref}
@@ -36,7 +36,7 @@
 I present a novel test of self-interacting dark matter (SIDM) models by
 analyzing the impact of self-interaction on the infall of the Sagittarius
 (Sgr) dwarf spheroidal galaxy.  A review of the history of dark matter
-detections and the development of the $\Lambda$CDM cosmological model is
+evidence and the development of the $\Lambda$CDM cosmological model is
 included, followed by a review of the motivations for and viability of SIDM
 models. Sgr is then presented as a testbed for these models, since its unique
 orbital history is highly sensitive to the microphysics determining the Galactic
@@ -57,15 +57,6 @@ This paper represents my own work in accordance with University regulations.
 
 \newpage
 
-\chapter*{Acknowledgements}
-
-First and foremost, I would like to thank my advisor, Professor Mariangela
-Lisanti, for a fantastic and fulfilling year of research...
-
-I would also like to thank the friends I have made at Princeton...
-
-I would lastly like to thank my family...
-
 \newpage
 
 \singlespacing
@@ -82,7 +73,43 @@ I would lastly like to thank my family...
 \include{tex/Sims}
 \include{tex/Conclusions}
 
-% \printbibheading
+\setcounter{secnumdepth}{-1}
+\chapter{Acknowledgements}
+
+First and foremost, I would like to thank my advisor, Professor Mariangela
+Lisanti, for a fantastic and fulfilling year of research.  This research has
+been incredibly exciting and interesting for me, and I always felt you left
+plenty of room for me to shape things how I would like.  Without your guidance
+and advice, however, none of this would have been possible, and for that I am
+very grateful.
+
+I would also like to thank the friends in my life who have helped support me
+in the long journey it took to get to where I am today.  I would like to
+specifically thank my home friends---Curtis, Nate, Trumond, and Sara---for
+helping me to get \textit{to} Princeton, and my Princeton friends---Alvin,
+Karolen, Simon, and Jason---for helping me to get \textit{through} Princeton.
+
+Next, I want to thank Kathryn.  You have been an immense source of happiness
+and support to me for the past several years, and I feel you have helped me to
+grow a lot.  Specifically, though, I want to thank you for helping me push
+through the rough times and to enjoy the happy ones on the other side.
+
+Lastly, to my family: Mom, Dad, Justin, Brianna, and GJ\&GJ, thank you always
+being there and supporting me as I took on new challenges and pushed myself to
+new heights.  Thank you also for helping to mold me into the person I am
+today.  I don't know what I would do without you all.
+
+\chapter{Institutional acknowledgements}
+
+This research relied heavily on NumPy\footnote{\url{https://numpy.org}}
+\cite{harris_array_2020}, Matplotlib\footnote{\url{https://matplotlib.org}}
+\cite{hunter_matplotlib_2007}, and Astropy\footnote{\url{https://www.astropy.org}}
+\cite{astropy_collaboration_astropy_2013, astropy_collaboration_astropy_2018},
+a collection of open-source Python packages for numerical computing, data
+visualization, and astronomy.
+
+The simulations presented in this article were performed on computational resources managed and supported by Princeton Research Computing, a consortium of groups including the Princeton Institute for Computational Science and Engineering (PICSciE) and the Office of Information Technology's High Performance Computing Center and Visualization Laboratory at Princeton University.
+
 \printbibliography
 
 \end{document}
