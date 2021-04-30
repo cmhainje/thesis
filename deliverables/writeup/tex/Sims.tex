@@ -289,6 +289,9 @@ more stellar particles and the inclusion of a stellar bulge.
 \hypertarget{comparison-to-stream-data}{%
 \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
+\hypertarget{progenitor-coordinates}{%
+\subsection{Progenitor coordinates}\label{progenitor-coordinates}}
+
 As stated previously, a description of the orbit of the progenitor will allow us
 to determine the specific time stamps at which our mergers most closely
 approximate Sgr today.  We take the observed coordinates of Sgr to be
@@ -384,7 +387,10 @@ significant with respect to the uncertainties in the measured coordinates.
 % \hypertarget{comparison-to-stream-data}{%
 % \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
-The last piece of the analysis that we will consider is a comparison to data
+\hypertarget{stream-shape}{%
+\subsection{Stream shape}\label{stream-shape}}
+
+The next piece of the analysis that we will consider is a comparison to data
 from the second data release (DR2) of the \textit{Gaia}
 mission~\cite{lindegren_gaia_2018,gaia_collaboration_gaia_2018}, from which Sgr
 stars have been identified by Ibata et al.~\cite{ibata_panoramic_2020} using the
@@ -394,7 +400,7 @@ dataset includes the \textit{Gaia} equatorial coordinates, proper motions,
 magnitudes, and colors of 263,438 stars, along with an estimate of the
 distance provided by the algorithm.  They find their dataset to agree well
 with the Law 2010 model~\cite{law_sagittarius_2010}, barring a few small
-deviations.  The \verb|SF| sample is shown in
+deviations.  The \verb|SF| sample is shown in equatorial coordinates in
 Figure~\ref{fig:streamfinder}.  We note in particular a very dense region of
 stars at around $\alpha = 280^\circ$, $\delta = -30^\circ$, and heliocentric
 distance $\approx 30$ kpc.  This is the Sagittarius progenitor.
@@ -458,11 +464,79 @@ the distribution of line-of-sight velocities, as the CDM mergers both show a
 rather significant number of stars with large, positive line-of-sight
 velocities (in the orange-red region of the colormap). The SIDM merger, by
 contrast, has very few such stars, preferring smaller velocities. Unfortunately,
-the \verb|SF| dataset does not come with radial velocities, but the authors note
-that the radial velocities of 2984 of the stars can be found in public
-spectroscopic studies. Future studies would do well to compare the distributions
-of radial velocities in simulations like ours with the radial velocities of
-those stars.
+the \verb|SF| dataset does not come with radial velocities; as such, we choose
+to use another dataset for this comparison.
+
+
+\hypertarget{twomass}{\subsection{2MASS M-giants}\label{twomass}}
+
+The final comparison we will make is with M-giant stars from the Two Micron All
+Sky Survey (2MASS) as identified by Majewski et al.~\cite{majewski_two_2003}.
+There are significantly fewer stars in this dataset (only 202), but they all
+include line-of-sight velocity and heliocentric distance information, allowing
+us to directly compare these quantities with our simulated streams. We note
+further that these stars explicitly correspond to the leading and trailing arms
+of Sgr, not the progenitor.
+
+We begin with a full comparison of our three simulated streams against the 2MASS
+data in terms of right ascension, declination, heliocentric distance, and
+line-of-sight velocity. The comparison is shown in Figure~\ref{fig:eq_2mass}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{figs/equatorial_2mass.png}
+    \caption{%
+        Right ascension, declination, heliocentric distance, and line-of-sight
+        velocity for our simulated streams at their fifth pericenters. The white
+        circle gives the position of the simulated progenitor; the black circle
+        gives the observed coordinates of the progenitor.  The black squares
+        correspond to 2MASS M-giant stars, identified by
+        Majewski~\cite{majewski_two_2003}.
+    }
+    \label{fig:eq_2mass}
+\end{figure}
+
+This Figure appears to show good agreement especially between our CDM mergers
+and the 2MASS data. In particular, the right ascension and declination data are
+almost entirely reproduced by the CDM streams, with fairly good agreement in
+terms of line-of-sight velocity and heliocentric distance. The SIDM stream,
+however, gives a much poorer reproduction of the 2MASS stream. Most prominently,
+at right ascensions near $200^\circ$, the corresponding declinations are all
+significantly greater than the 2MASS data.
+
+We next compare our data to specifically the heliocentric distances and
+line-of-sight velocities by reproducing Figure~\ref{fig:vel_v_dist} with the
+2MASS data overlaid. The result is shown in Figure~\ref{fig:vel_v_d_2mass}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\linewidth]{figs/vel_v_dist_2mass.png}
+    \caption{%
+        Line-of-sight velocity versus heliocentric distance for each of the
+        three mergers at their respective fifth pericenters. The blue star
+        denotes the observed distance and velocity; the green squares denote
+        data from 2MASS M-giant stars. 
+    }
+    \label{fig:vel_v_d_2mass}
+\end{figure}
+
+This Figure again shows good general agreement between the mergers and the
+data.  In particular, the CDM/core merger accurately reproduces many of the
+features of the 2MASS data at small heliocentric distances, including the
+distances of the closest stars.  The CDM/cusp merger is the next most accurate
+in this region, with its closest stars being only a small amount ($\sim 5$
+kpc) farther away than given by 2MASS data.  The SIDM merger again has the
+worst agreement of the mergers, with very few stars at small heliocentric
+distances and low line-of-sight velocities.
+
+These plots give more evidence to believe that the distribution of
+line-of-sight velocities in simulations of the Sgr stream can prove to show
+important differences between the CDM and SIDM dark matter models. In
+particular, we have seen that our CDM models are generally able to reproduce
+the Sgr stream more faithfully than can the corresponding SIDM model.
+
+todo round out this thought
+
 
 % There also exist some differences between the three mergers in this frame.
 % For example, the CDM/cusp run appears to have more particles with larger
