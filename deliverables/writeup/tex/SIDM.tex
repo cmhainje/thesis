@@ -74,13 +74,12 @@ method.
 constraints on the self-interaction cross section into a table. The data are
 reproduced in Table~\ref{tab:constraints}. In particular, notice that the data
 are consistent with a decaying cross section as the velocity scale increases.
-Specifically, all data (spiral galaxies and both applications of the
-too-big-to-fail problem) indicate that the small-scale cross-section ought to
-be $\gtrsim 0.5$ to 1 cm$^2/g$, but the larger-scale cross section ought to be
-$\sim 0.1$ cm$^2$/g or smaller. This rules out any particle models we find
-with a velocity-independent cross section from being able to solve the
-small-scale problems. However, such models may serve as good approximations in a
-régime where the cross section does not vary much.
+Specifically, all small-scale data is consistent with a cross section of
+$\gtrsim 0.5$ to 1 cm$^2$/g, but larger-scale data is consistent with a cross
+section which is $\sim 0.1$ cm$^2$/g or smaller.  This rules out any particle
+models we find with a velocity-independent cross section from being able to
+solve the small-scale problems.  However, such models may serve as good
+approximations in a régime where the cross section does not vary much.
 
 \begin{table}
     \centering
@@ -132,7 +131,7 @@ régime where the cross section does not vary much.
     \label{tab:constraints}
 \end{table}
 
-todo add one of those plots that shows it changing slowly for galactic scales
+% todo add one of those plots that shows it changing slowly for galactic scales
 
 \hypertarget{particle-physics-models}{%
 \section{Particle physics models}\label{particle-physics-models}}
@@ -153,7 +152,7 @@ This can be described by the Lagrangian
 \end{equation}
 From the Lagrangian, we can read off the Feynman rule for a four-point
 intersection to have the matrix element \(i\mathcal{M} = -i\lambda\), yielding
-the two-to-two self-interaction differential cross-section
+the two-to-two self-interaction differential cross section
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \frac{\lambda^2}{64\pi^2 (4m^2)}.
 \end{equation}
@@ -163,10 +162,10 @@ particles gives a total cross section
 \sigma(\varphi\varphi\to\varphi\varphi) = \frac{\lambda^2}{128\pi m^2}.
 \end{equation}
 One can easily see that this cross section does not admit any kind of
-velocity independence. Thus, one could make this model consistent for a
+velocity dependence. Thus, one could make this model consistent for a
 small subset of scales (e.g. \(\sigma/m \sim 1\) cm\(^2\)/g for dwarf galaxy
 scales), but then it would necessarily fail on other scales. This makes the
-model viable only for analyses of limited scales where the cross-section is
+model viable only for analyses of limited scales where the cross section is
 not expected to vary greatly, but it is generally infeasible as a solution to
 the small-scale problems.
 
@@ -217,15 +216,15 @@ be~\cite{tulin_dark_2018}
     + m_\phi^2 \right]^2}
 \end{equation}
 An important implication of this formula is that the mediator mass must be
-positive, i.e.\(m_\phi > 0\). If instead \(m_\phi = 0\), we would then find
+positive, i.e. \(m_\phi > 0\). If instead \(m_\phi = 0\), we would then find
 that \( d\sigma/d\Omega \propto v_{\text{rel}}^{-4}\), which is far too strong
 at small velocities to admit a solution which is consistent with observations.
 A small but nonzero mediator mass \(m_\phi\), on the other hand, allows us to
 ``soften'' this velocity-dependence to admit a more consistent model.
 
 While quite simple, it has been shown in~\cite{tulin_resonant_2013} that it is
-possible for it to simultaneously accommodate all important observations and
-solve the small scale problems.
+possible for this model to simultaneously accommodate all important
+observations and solve the small scale problems.
 
 \hypertarget{strong-interactions}{%
 \subsection{Strong interactions}\label{strong-interactions}}
@@ -278,10 +277,10 @@ glueballs may become stable under an accidental symmetry like baryons,
 allowing them to be the primary dark matter candidate.
 
 The observables that could result from the above considerations are as diverse
-as the models themselves. One aspect of these models that wee have not
-considered is what the interactions with the standard model could look like.
-Some models predict the dark matter candidate to be neutral under standard
-model interactions, but its constituents to be charged. In such a case, the
+as the models themselves. One aspect of these models that we have not
+considered is what the interactions with the Standard Model could look like.
+Some models predict the dark matter candidate to be neutral under Standard
+Model interactions, but its constituents to be charged. In such a case, the
 model would have a coupling to the photon, and it would be possible to
 directly detect the particle. We may also consider the case where our theory
 predicts fundamental fermions. It is plausible that these fermions would
@@ -293,12 +292,14 @@ collider-specific results, in~\cite{kribs_review_2016}.
 \hypertarget{analytic-description-with-baryons}{%
 \section{Analytic description with baryons}\label{analytic-description-with-baryons}}
 
-In 2014, Kaplinghat et al.~\cite{kaplinghat_tying_2014} provided a
-semi-analytic approach to deriving equilibrium solutions for the dark matter
-density profile using the Jeans equation. This approach allows for the
-inclusion of the gravitational potential of both the dark matter and baryons,
-providing the means to make predictions about the effects of baryons on the
-dark matter distribution.
+The most obvious manifestation of dark matter self-interaction is in its
+effects on astrophysical mass distributions.  As such, an understanding of the
+particle physics properties of dark matter, like the self-interaction cross
+section, will require the ability to analytically describe and understand the
+impact of these properties on astrophysical observables.  To this end, we
+present the Jeans approach, an analytic method for deriving the equilibrium
+distribution of self-interacting dark matter in the presence of baryons,
+following closely the work of Kaplinghat et al.~\cite{kaplinghat_tying_2014}.
 
 The discussion begins with the time-independent Jeans equation, e.g.~Equation
 4.209 of~\cite{binney_galactic_2008}, which is 
@@ -314,7 +315,7 @@ constant $\sigma_0$, and that the time required for dark matter to attain
 equilibrium through self-scattering is long, which allows us to neglect the
 self-scattering term (on the left side of the equation).  We can also write
 the equation in terms of the mass density $\rho$ instead of the number density
-$\nu$, as $\rho \propto \nu$, since each dark matter particle will have the
+$\nu$, as $\rho \propto \nu$ since each dark matter particle will have the
 same mass.  With these assumptions, the equation becomes
 \begin{equation}
     \rho \nabla_r \Phi_{\text{tot}}(\mathbf{r}) + \sigma_0^2 \nabla_r
@@ -345,7 +346,7 @@ Now, for convenience, we introduce a function $h(\mathbf{x}) = \ln
 The result is given by Equation 1 in~\cite{kaplinghat_tying_2014}, here
 \begin{equation}
 \nabla_x^2 h(\mathbf{x}) + (4\pi G r_0^2/\sigma_0^2)
-\left[\rho_B(\mathbf{x}) + \rho_0 \exp\left(h(\mathbf{x})\right)\right] = 0,
+\left[\rho_B(\mathbf{x}) + \rho_0 \exp\left(h(\mathbf{x})\right)\right] = 0.
 \end{equation}
 
 As a simple test of this equation, we can consider the case where
@@ -542,6 +543,7 @@ density at approximately 0.5 kpc, in line with the analytic expectation.
     \label{fig:sidm_expected_density}
 \end{figure}
 
+
 \hypertarget{self-interaction-in-simulation}{%
 \section{Self-interaction in simulation}\label{self-interaction-in-simulation}}
 
@@ -556,15 +558,16 @@ by~\cite{rocha_cosmological_2013}. Much of the following discussion comes in
 large part from~\cite{rocha_cosmological_2013}.
 
 In our simulation, we consider some number of ``macro-particles,'' each
-of which represents an ensemble of dark matter particles, a patch of the
+of which represents an ensemble of dark matter particles, or a patch of the
 dark matter phase-space density. We let each macro-particle have mass
 \(m_p\), and we keep this mass consistent across all dark matter
 macro-particles. Since we consider the macro-particle as representing a
 patch of the phase-space density, we consider its position to be
 centered at some point \(\mathbf{x}\) but spread out according to a
 kernel \(W(r,h)\). Here, \(r\) is the distance from the center of the
-macro-particle and \(h\) is a smoothing length. In GADGET-2, from which
-GIZMO is built, the kernel is given by 
+macro-particle and \(h\) is a smoothing length.  In
+GADGET-2~\cite{springel_cosmological_2005}, from which GIZMO is built and
+inherits its implementation of this algorithm, the kernel is given by
 \begin{equation}
 W(r,h) = \frac{8}{\pi h^3} \left\{ 
     \begin{array}{ll}
@@ -574,10 +577,9 @@ W(r,h) = \frac{8}{\pi h^3} \left\{
     \end{array}
 \right.
 \end{equation}
-todo find whether this is the same for GIZMO. todo find how \(h\) is
-determined in GIZMO. The velocity of the macro-particle, on the other hand, is
-taken to be a delta function, such that the macro-particles have a single
-defined velocity.
+The smoothing length in GIZMO is fixed and on the order of $10$ pc.  The
+velocity of the macro-particle is taken to instead be a delta function, such
+that the macro-particles have a single defined velocity.
 
 When the patches represented by two macro-particles overlap, we can
 compute the interaction rate between them. The rate of scattering of a
@@ -585,7 +587,7 @@ macro-particle \(j\) off a target particle \(i\) is given by
 \begin{equation}
 \Gamma(i|j) = (\sigma/m) m_p |\mathbf{v}_i - \mathbf{v}_j| g_{ji},
 \end{equation}
-where \(\sigma/m\) is the familiar cross-section to mass ratio and
+where \(\sigma/m\) is the familiar cross section to mass ratio and
 \(g_{ij}\) is a number density factor whose purpose is account for the
 overlap of the two macro-particles' smoothing kernels. It is given by
 \begin{equation}

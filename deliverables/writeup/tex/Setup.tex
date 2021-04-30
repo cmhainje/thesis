@@ -1,5 +1,5 @@
-\hypertarget{experimental-setup}{%
-\chapter{Experimental setup}\label{experimental-setup}}
+\hypertarget{simulation-setup}{%
+\chapter{Simulation setup}\label{simulation-setup}}
 
 As stated previously, the core work of this thesis is performing N-body
 simulations of the infall of Sgr in the style of Dierickx et
@@ -120,7 +120,7 @@ differences are quite small.
 
 The second source of discrepancy between their work and ours is that we have
 less resolution in our stellar profile than in their work. This is in part
-because they used a Hernquist bulge in both their Milky Way and Sgr, wherer this
+because they used a Hernquist bulge in both their Milky Way and Sgr, where this
 has been omitted from our work. It is also because they used more stellar
 particles for the Sgr disk than we did ($1.94 \times 10^4$ versus $1.17 \times
 10^4$), owing to a technical error in our initial conditions creation
@@ -137,18 +137,22 @@ used around 10 GB of RAM and typically split the computation over 25 cores.
 \section{Equilibration}\label{equilibration}}
 
 After generating the initial particle distributions for each galaxy, we
-evolved each one forward in time for a several Gyr to allow it to equilibrate.
-For our runs involving SIDM, we perform this equilibration run with SIDM
-microphysics turned on, allowing for the creation of a core in the central
-region of the dark matter halo.
+evolved each one forward in time for several Gyrs to allow it to equilibrate.
+One reason we do this is because generating initial conditions which are in
+equilibrium is a difficult problem, and the initial conditions generator we use
+only gives an approximately equilibrated distribution. Evolving it forward in an
+isolated system allows the galaxy to come to equilibrium naturally. We have seen
+this to be necessary particularly for the Sgr disk distributions.  Another
+reason we choose to do this is to create a cored dark matter profile when
+using SIDM microphysics.
 
 For each galaxy, we begin with the parameters discussed in the previous
 section and perform two equilibration runs: one using CDM microphysics and one
-using SIDM microphysics with a cross section of \(\sigma / m = 10\)
-cm\(^2\)/g. In this study, we choose to use a somewhat high cross section in
-order to exaggerate any differences that may appear because of the presence of
-self-interaction. We note that future studies should consider a range of cross
-sections.
+using SIDM microphysics with a velocity independent cross section of \(\sigma
+/ m = 10\) cm\(^2\)/g.  In this study, we choose to use a somewhat high cross
+section in order to exaggerate any differences that may appear because of the
+presence of self-interaction.  We note that future studies should consider a
+range of cross sections and velocity dependence.
 
 For the Milky Way equilibrations---both CDM and SIDM---we only evolve the
 galaxy forward for 1 Gyr, writing time stamps approximately every 0.1 Gyr.
@@ -276,5 +280,6 @@ we combine them to give us two initial conditions for mergers: cuspy and
 cored. The Milky Way is left at its position from the equilibration run, as
 its center of mass will be close to the origin and its net velocity will be
 close to zero. Sgr is placed such that its center of mass lies at the point
-\([125, 0, 0]\) and is given an initial velocity \([-10,0,70]\).  These values
-correspond to the best fit values found in~\cite{dierickx_predicted_2017}.
+\([125, 0, 0]\) kpc and is given an initial velocity \([-10,0,70]\) km/s.
+These values correspond to the best fit values found
+in~\cite{dierickx_predicted_2017}.

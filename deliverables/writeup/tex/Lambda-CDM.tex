@@ -54,7 +54,9 @@ matter which interacted with photons only gravitationally, however, the
 predicted anisotropies are revised downward, closer to \(10^{-5}\), consistent
 with observation.  Dark matter seems to fit this role perfectly.  Anisotropies
 on this scale have been observed by more recent studies, beginning with the
-COBE satellite in 1992~\cite{smoot_structure_1992,efstathiou_cobe_1992}.
+COBE satellite in 1992~\cite{smoot_structure_1992,efstathiou_cobe_1992} and
+more recently with the WMAP~\cite{bennett_first-year_2003} and
+Planck~\cite{planck_collaboration_planck_2011} missions.
 
 Third, data from rotation curves became quite convincing. Rubin and Ford
 published improved optical data from the galaxy M31, the same galaxy studied
@@ -206,9 +208,14 @@ M_{\text{vir}} = \frac{4\pi}{3} R_{\text{vir}}^3 \Delta_c \rho_c,
 \end{equation}
 where \(R_{\text{vir}}\) is the virial radius, \(\rho_c\) is the
 critical density of the Universe, and \(\Delta_c\) is the over-density
-parameter. In this work, we choose to set \(\Delta_c = 200\) and thus
-mark the virial mass and radius as with a subscript 200 instead of
-``vir''.
+parameter. As noted in~\cite{bullock_small-scale_2017}, identifying the mass of
+a halo requires a way of defining the outer edge, or the radius, of the halo,
+and this is done by a choice of $\Delta_c$. It is often chosen to match the
+expected over-density for dark matter in a region which undergone an idealized
+spherical collapse. Such values are often on the order of $\mathcal{O}(100)$; in
+this work, we choose to follow a common convention by setting \(\Delta_c =
+200\).  We thus mark the virial mass and radius with a subscript 200 instead
+of ``vir''.
 
 The \(\Lambda\)CDM model also provides predictions about the internal
 structure of these dark matter halos. Dark matter-only N-body simulations were
@@ -282,7 +289,7 @@ irregulars''~\cite{navarro_structure_1995}.
 
 The second problem is the \textbf{missing satellites} problem.  $\Lambda$CDM
 simulations predict that galaxies as large as the Milky Way should have as
-many as \(\sim 1~000\) dark subhalos large enough to host dwarf
+many as \(\sim 10^3\) dark subhalos large enough to host dwarf
 galaxies~\cite{bullock_small-scale_2017}.  However, as of 2019, less than 60
 dwarf galaxies are known within the Milky Way~\cite{simon_faintest_2019}.
 
@@ -315,16 +322,33 @@ simulations. Further, in recent years, it has been shown that all of the above
 problems (and other small-scale issues) can be reduced or eliminated by the
 inclusion of stellar feedback and other effects. For example,~\cite{pontzen_how_2012} show that supernova feedback can alleviate the core-cusp
 problem, and~\cite{chan_impact_2015} show that stellar feedback can explain
-the too-big-to-fail problem.
+the too-big-to-fail problem. These works, however, are subject to their fair
+share of assumptions.
 
 However, prior to these findings, researchers sought modifications to the
 model that would preserve the successes of \(\Lambda\)CDM on large scales
 \emph{and} solve the small-scale problems. Some researchers have sought
 modifications to the model of gravity, but a more popular avenue has been the
-modification of the dark matter model. While it seems that integration of more
+modification of the dark matter model. While it the integration of more
 sophisticated baryonic processes may be sufficient to solve the small-scale
-problems, there is no evidence yet that other proposed dark matter models are
-incorrect descriptions of the particle nature of dark matter. As such, further
-tests of \(\Lambda\)CDM and these alternative dark matter models are necessary
-as probes of dark matter particle physics. The alternative dark matter model
-that we consider in this work is \emph{self-interacting dark matter}, or SIDM.
+problems, these studies have not ruled out other proposed dark matter models.
+Moreover, these alternative models have proved quite fruitful in making
+available a wide variety of descriptions of the particle nature of dark matter.
+As such, further tests of \(\Lambda\)CDM and these alternative dark matter
+models are necessary as probes of dark matter particle physics.
+
+This work is another of these tests.  In particular, we consider the
+\emph{self-interacting dark matter} (SIDM) model, which posits that there may
+exist a non-gravitational mechanism by which dark matter particles interact
+with one another.  We investigate the viability of this model by studying and
+simulating the infall of the Sagittarius dwarf spheroidal galaxy, whose orbit
+has left tidal debris in a spectacular stream which arcs across the sky.  The
+orbital history of Sagittarius is quite sensitive to the specific microphysics
+which determine the Galactic gravitational potential, so the effects of a new
+dark matter model may manifest in an observable manner in the resultant
+stream.  To this end, we begin by reviewing the SIDM model in
+Chapter~\ref{self-interacting-dark-matter} and the Sagittarius galaxy in
+Chapter~\ref{sagittarius}.  We then discuss the setup of our infall simulations
+in Chapter~\ref{simulation-setup}, before discussing the results in
+Chapter~\ref{full-infall-simulations}. 
+

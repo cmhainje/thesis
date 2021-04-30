@@ -7,7 +7,7 @@ results}\label{description-and-initial-results}}
 
 With the equilibrated and merged initial conditions for both cuspy (CDM) and
 cored (SIDM) galaxies, we now carry out our full simulations of the Sgr
-infall.  We will consider \emph{three} mergers: the cuspy initial conditions
+infall.  We will consider \emph{three} cases: the cuspy initial conditions
 evolved using CDM microphysics, the cored initial conditions evolved with CDM
 microphysics, and the cored initial conditions evolved with SIDM microphysics.
 As before, we take \(\sigma / m\) = 10 cm\(^2\)/g in the SIDM case.  These
@@ -18,9 +18,9 @@ are the result of a cored initial profile or from the inclusion of
 self-interactions.
 
 For each merger, the infall is simulated for 10 Gyr, with snapshots saved
-every 0.978 Gyr.  In Figure~\ref{fig:inits}, we show the positions of the
-both the stellar and dark matter particles of Sgr in the orbital plane at
-several times for each merger.
+every 0.978 Gyr.  In Figure~\ref{fig:inits}, we show the positions of both the
+stellar and dark matter particles of Sgr in the orbital plane at several times
+for each merger.
 
 \begin{figure}
     \centering
@@ -38,18 +38,24 @@ several times for each merger.
 Even from these plots, there are some interesting patterns to note. First, we
 notice the development of a winding stream structure much like that reported
 in~\cite{dierickx_predicted_2017} by around 6 to 7 Gyr in all three cases. We
-can also note that the CDM/core and CDM/cusp are rather similar. There are some
-discernible differences, but the general shape and size of the stream structure
-is fairly similar throughout. 
+can also note that the CDM/core and CDM/cusp streams are rather similar, with
+the general shape, size, and overall rotation in agreement. There do exist some
+differences particularly at later times, however, particular in the inner
+stellar structure. For example, at 6.85 Gyr, one can see a sharply defined inner
+stream at $(20,60)$ kpc which is significantly fuzzier and less dense in the
+CDM/cusp case. Similar differences emerge at the later 8.80 Gyr time stamp.
 
-There are quite marked differences between the SIDM and CDM cases, however.
-The stream arms appear to be slightly rotated clockwise relative to the CDM
-mergers, and the general shape of the inner structure is very different. These
-differences are even more apparent when looking at the distribution of dark
-matter. In the CDM mergers, the dark matter distribution appears to roughly
-trace out the distribution of the stream and has a distinct hole at the
-origin.  In the SIDM merger, however, the dark matter distribution largely
-loses the shape of the stream, instead collapsing inward toward the MW center.
+There are much more marked differences between the SIDM and CDM cases,
+however.  The stream arms appear to be slightly rotated clockwise relative to
+the CDM mergers, and the general shape of the inner structure is very
+different.  In particular, the CDM merger appear to show doubled-stream shape
+for the inner arms at the later time stamps which is entirely non-existent in
+the SIDM case.  These differences are even more apparent when looking at the
+distribution of dark matter.  In the CDM mergers, the dark matter distribution
+appears to roughly trace out the distribution of the stream and has a distinct
+hole at the origin.  In the SIDM merger, however, the dark matter distribution
+largely loses the precise shape of the stream, instead collapsing inward
+toward the MW center.
 
 We can also look at the density of particles in the orbital plane by performing
 a two-dimensional histogram on the data in Figure~\ref{fig:inits}.  The result
@@ -80,9 +86,9 @@ relatively few particles outside of the path of the stream.
 Looking at the density distribution of the stellar particles allows us to
 quantify some of the differences noted earlier.  For example, at 6.85 Gyr, the
 SIDM stream has a relatively high-density ($\sim 10^5$ M$_\odot$/kpc$^2$)
-stream arc extending from approximately $(-20,0)$ up to around $(60,125)$.
-The corresponding arc exists in the CDM cases, but it is less well-defined
-(there is more horizontal spread) and lower density ($\sim 10^4$
+stream arc extending from approximately $(-20,0)$ kpc up to around $(60,125)$
+kpc.  The corresponding arc exists in the CDM cases, but it is less
+well-defined (there is more horizontal spread) and lower density ($\sim 10^4$
 M$_\odot$/kpc$^2$).
 
 There are other, similar differences, but we would do better to analyze these
@@ -113,14 +119,14 @@ center of mass of the bound particles.  Then, for each bound particle, we
 compute its distance from the center of mass.  If this exceeds the fixed
 stripping radius, we unmark the star as bound and continue.
 
-As stated, this algorithm leaves has two parameters that can be tuned: the
-initial stripping radius for the initial Sgr stellar positions and the fixed
-stripping radius for all following snapshots. We found it useful to describe the
-initial stripping radius instead in terms of the percentage of particles
-that are initial counted as ``bound''. For example, we say that the we start
-with the innermost 20\% of particles and proceed with a fixed radius of 20 kpc. 
-effective for our mergers. The results of applying this algorithm to the
-CDM/Cusp merger data with a few different choices of parameters can be seen in
+As stated, this algorithm has two parameters that can be tuned: the initial
+stripping radius for the initial Sgr stellar positions and the fixed stripping
+radius for all following snapshots.  We found it useful to describe the
+initial stripping radius instead in terms of the percentage of particles that
+are initially counted as ``bound''.  For example, we say that the we start
+with the innermost 20\% of particles and proceed with a fixed radius of 20
+kpc.  The results of applying this algorithm to the CDM/cusp merger data with
+a few different choices of parameters can be seen in
 Figure~\ref{fig:fixed_star}.
 
 \begin{figure}
@@ -163,35 +169,18 @@ stripping away particles, we recompute the radius of the ball of the bound
 particles, and reset the stripping radius equal to this. For each snapshot
 following, we strip particles that are beyond this radius and recompute the
 radius.  Over time, the stripping radius will decrease, modeling the
-progressively decreasing size of the progenitor.  However, these modifications
-tend to make the algorithm a bit \textit{too} aggressive, with it stripping
-away all the particles in some cases.  We introduced a minimum stripping
-radius such that the algorithm would choose the maximum of the given minimum and
-the computed radius, but we found that the behavior in this case reduced to that
-of the fixed-radius algorithm. The results of this decaying stripping radius are
-shown in Figure~\ref{fig:decay_star}, with a minimum allowed stripping radius
-of 8 kpc.
+progressively decreasing size of the progenitor.  Some basic tests showed that
+this algorithm often becomes a bit too aggressive, so we introduced a minimum
+stripping radius, such that the algorithm would never use too small a stripping
+radius. 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{figs/decay_star.pdf}
-    \caption{%
-        Results of applying the ``decaying stripping radius''
-        progenitor-identifying algorithm to the CDM/cusp merger data with a
-        minimum stripping radius of 8 kpc.  Plots have same meaning as in
-        Figure~\ref{fig:fixed_star}.
-    }
-    \label{fig:decay_star}
-\end{figure}
-
-As can be seen in the figure, this algorithm leads to very aggressive stripping.
-No matter the initial conditions, the desired stripping radius falls
-\textit{very} quickly. For all considered parameter combinations, the desired
-stripping radius fell below 8 kpc before the 6 Gyr mark, at which point the
-algorithm will just default to using a fixed 8 kpc stripping radius. This
-indicates that these changes are simply too aggressive and, when bundled with a
-minimum stripping radius, is effectively equivalent to the fixed stripping
-radius scheme.
+Further testing with a minimum stripping radius of 8 kpc and a variety of
+different initial parameters showed the algorithm to simply be too aggressive.
+For all considered combinations of parameters, we found that the algorithm
+reduced itself below the minimum stripping radius by around 6 Gyr.  This means
+that at later times, when we might expect the closest resemblance to the
+observed Sgr progenitor, the algorithm reduces to the fixed stripping radius
+algorithm with a fixed radius of 8 kpc. 
 
 One possible reason that it becomes too aggressive is because the actual
 size of the progenitor is not monitonically decreasing.  Rather, its size
@@ -201,7 +190,7 @@ These effects are modeled by the King formula for the tidal
 radius~\cite{king_structure_1962} as given in~\cite{dierickx_predicted_2017}:
 \begin{equation} \label{eq:king_radius}
     r_t = r \left[ \frac{1}{2} 
-    \frac{M_{\text{Sgr}(<r_t)}}{M_{\text{MW}(<r)}} \right]^{1/3},
+    \frac{M_{\text{Sgr}}(<r_t)}{M_{\text{MW}}(<r)} \right]^{1/3},
 \end{equation}
 where $M_{\text{gal}}(<r)$ is the enclosed halo mass in galaxy ``gal'' within
 radius $r$ of the center of mass of the galaxy, $r$ is the distance between
@@ -210,36 +199,22 @@ given snapshot, then, we can compute the tidal radius according to this
 formula by subtracting $r_t$ from both sides and using a simple root finder to
 identify the $r_t$ which solves the equation.  We then strip any particles
 which are farther than $r_t$ away from the center of mass of the progenitor at
-the current time. The results of using the King tidal radius are shown in
-Figure~\ref{fig:king_star}. Again, we pair this algorithm with a minimum
-stripping radius of 8 kpc.
+the current time.  Again, initial testing showed that this algorithm needed a
+minimum stripping radius to prevent it from stripping away all the stellar
+particles.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{figs/king_star.pdf}
-    \caption{%
-        Results of using the ``King tidal radius'' progenitor-identifying
-        algorithm on the CDM/cusp merger data with a minimum stripping radius of
-        8 kpc. The legend entries correspond to a fixed constant multiplied
-        against the tidal radius before performing stripping. Plots again have
-        the same meaning as in Figure~\ref{fig:fixed_star}.
-    }
-    \label{fig:king_star}
-\end{figure}
+Further testing with a minimum stripping radius of 8 kpc showed this algorithm
+to also be too aggressive.  We tried to add a multiplicative factor to the tidal
+radius in order to make it a little larger before stripping, but this did not
+appear to help very much. After only a few Gyr, this too reduced effectively to
+the fixed radius strategy, using only the minimum stripping radius.
 
-Yet again, this algorithm appears to simply be too aggressive. In all cases, the
-tidal radius quickly dips below the minimum stripping radius of 8 kpc. Further,
-the algorithm appears to be somewhat unstable, defaulting to a recommended
-radius of just \textit{zero} beyond a certain threshold. When this occurs, the
-algorithm defaults to a fixed stripping radius equal to the minimum. Again,
-then, this algorithm offers no improvements over the fixed radius.
-
-At this point, it seems like the issue of too few bound particles at late times
-may be a problem related to our relatively small number of Sgr stellar particles
-instead of a problem with the algorithms themselves.  As such, we decided to
-try to use the fixed algorithm but using both stellar \textit{and} dark matter
-particles.  The result on the CDM/cusp data is shown in
-Figure~\ref{fig:fixed_both}.
+At this point, we concluded that the issue of too few bound particles at late
+times may be a problem related to our relatively small number of Sgr stellar
+particles, instead of a problem with the algorithms themselves.  As such, we
+decided to try to use the fixed radius algorithm but using both stellar
+\textit{and} dark matter particles.  The result on the CDM/cusp data is shown
+in Figure~\ref{fig:fixed_both}.
 
 \begin{figure}
     \centering
@@ -279,24 +254,24 @@ The resulting data are shown in Figure~\ref{fig:all}.
 \end{figure}
 
 The plots in this figure are evidence that SIDM microphysics may indeed have a
-profound impact on the resulting trajectory of the Sgr satellite.  One
-difference can be see in that the number of bound particles decreases much
-more substantially at early times than either of the two CDM runs.  This could
-be explained by considering that self-interactions provide a mechanism for
-dark matter to free itself from shallow gravitational potential wells to which
+profound impact on the resulting trajectory of the Sgr satellite.  One such
+difference is that the number of bound particles decreases much more
+substantially at early times than either of the two CDM runs.  This could be
+explained by considering that self-interactions provide a mechanism for dark
+matter to free itself from shallow gravitational potential wells to which
 collisionless dark matter would remain confined.
 
 Looking at the MW-Sgr separation over time, it is immediately evident that the
 cored profile yields a slightly longer orbital period, given the slowly
 increasing distance between the apo- and pericenters of the CDM/cusp and
 CDM/core orbits.  The inclusion of self-interactions appears to add to this
-effect, with the CDM/cusp attaining six pericenters before the SIDM orbit is
-able to reach a fifth.
+effect, with the CDM/cusp progenitor attaining six pericenters before the SIDM
+orbit is able to reach a fifth.
 
 One phenomenon showcased by the separation curves which is difficult to
-understand is the lack of a consistent decay in the apocenters. We compare to
-figure 6 of~\cite{dierickx_predicted_2017}, which shows a steadily decreasing
-pericenter.  This is the expected behavior; as the Sgr progenitor orbits and
+understand is the lack of a consistent decay in the apocenters.  We compare to
+Figure 6 of~\cite{dierickx_predicted_2017}, which shows a steadily decreasing
+apocenter.  This is the expected behavior; as the Sgr progenitor orbits and
 decays, we would expect it to lose energy and steadily fall inward.  This,
 however, does not appear in our plots.  In fact, this phenomenon is
 exacerbated in the SIDM merger, where the apocenter actually appears to
@@ -309,21 +284,30 @@ would also likely be alleviated by greater stellar resolution through the use of
 more stellar particles and the inclusion of a stellar bulge. 
 
 
-\hypertarget{time-of-closest-match}{%
-\section{Time of closest match}\label{time-of-closest-match}}
+% \hypertarget{time-of-closest-match}{%
+% \section{Time of closest match}\label{time-of-closest-match}}
+\hypertarget{comparison-to-stream-data}{%
+\section{Comparison to stream data}\label{comparison-to-stream-data}}
 
 As stated previously, a description of the orbit of the progenitor will allow us
 to determine the specific time stamps at which our mergers most closely
 approximate Sgr today.  We take the observed coordinates of Sgr to be
-$(\alpha, \delta) = (283.83, -29.45)$ (where $\alpha$ is right ascension and
-$\delta$ is declination) degrees~\cite{nasa_nasaipac_nodate}, proper motion
-$(\mu_\alpha \cos\delta, \mu_\delta) = (-2.54 \pm 0.18, -1.19 \pm 0.16)$
-mas/yr~\cite{massari_hubble_2013}, distance $24.8 \pm 0.8$
+$(\alpha, \delta) = (283.83, -29.45)$ degrees (where $\alpha$ is right
+ascension and $\delta$ is declination)~\cite{nasa_nasaipac_nodate}, proper
+motion $(\mu_\alpha \cos\delta, \mu_\delta) = (-2.54 \pm 0.18, -1.19 \pm
+0.16)$ mas/yr~\cite{massari_hubble_2013}, heliocentric distance $24.8 \pm 0.8$
 kpc~\cite{kunder_distance_2009}, and line-of-sight velocity $179 \pm 1$
-km/s~\cite{dierickx_predicted_2017,bellazzini_nucleus_2008}. We can then convert
-the coordinates of the Sgr progenitor to equatorial coordinates and look at the
-evolution over time, comparing against these reference values. The result is
-shown in Figure~\ref{fig:eq_prog}.
+km/s~\cite{dierickx_predicted_2017,bellazzini_nucleus_2008}.  
+
+To compare our data to these coordinates, we must convert from Galactocentric
+distances in the orbital plane to equatorial coordinates.  We do this using the
+Astropy package~\cite{astropy_collaboration_astropy_2013,
+astropy_collaboration_astropy_2018} with the assumptions that the Sun is
+located at approximately $(8,0,0)$ kpc with a velocity which is approximately
+directed in the positive $y$ direction.  The resulting coordinates over time
+are shown in Figure~\ref{fig:eq_prog}.  We note that the right ascension data
+generally moves from left to right across the plot and is meant to be
+interpreted as wrapping around from the right edge back to the left.
 
 \begin{figure}
     \centering
@@ -331,84 +315,106 @@ shown in Figure~\ref{fig:eq_prog}.
     \caption{%
         Trajectory of the Sgr progenitor in terms of equatorial coordinates and
         proper motions for each merger. Black squares represent the observed
-        coordinates of the progenitor today.
+        coordinates of the progenitor today. Error bars are present for observed
+        quantities with uncertainties, though are in some cases smaller than
+        the size of the marker (particularly in the velocity versus distance
+        subplots).
     }
     \label{fig:eq_prog}
 \end{figure}
 
-We can also focus specifically on the position of the progenitor instead of its
-velocity, looking specifically at the right ascension, declination, and
-distance. We find the orbit to be strongly period in right ascension, so these
-plots have been ``unwrapped'' to better show the evolution of the progenitor
-over time. The results are shown in Figure~\ref{fig:eq_prog_unwrapped}.
+We note that the Dierickx 2017 model~\cite{dierickx_predicted_2017} most
+closely approximated the observed coordinates just after its fifth pericenter,
+with the best agreement with the stream shape occurring then as well.
+Unfortunately, no snapshot of our model comes as close to these coordinates as
+theirs, but we believe that this discrepancy would be alleviated somewhat by
+greater time resolution in the snapshots of the stream.  We do, however, find
+that the CDM mergers attain their closest matches to the observed coordinates
+just after their fifth pericenters (approximately 7.04 Gyr and 7.43 Gyr for
+the /cusp and /core cases, respectively), in accord with the Dierickx model.
+The SIDM merger attains its closest match after its fourth pericenter
+(approximately 6.75 Gyr) with its fifth pericenter (approximately 8.80 Gyr)
+the next closest match.
+
+In particular, the line-of-sight velocity versus heliocentric distance plots
+in the Figure show a curious trend.  In the CDM cases, the trajectory passes
+roughly through the observed velocity and distance with every pericentric
+passage except the first.  By contrast, no time stamp of the SIDM merger after
+the third pericenter appears to closely replicate the observed velocity.  At
+such early times, however, Sgr has not completed enough wraps for the resulting
+stream to match existing models, such as Law 2010 or Dierickx 2017.  We also
+note that the orbital period of the SIDM merger was seen to be significantly
+longer than that of either CDM merger; we believe this to be consistent with
+the smaller line-of-sight velocities observed here.
+
+We can also use our progenitor-identifying algorithm to obtain estimates of the
+times at which each stellar particle comes unbound from the progenitor. We can
+thus look at the line-of-sight velocity and heliocentric distance for each star
+of the mergers at their respective fifth pericenters, colored according to their
+stripping time. We choose to use the fifth pericenter for the SIDM merger as
+well because it gives the best agreement with the observed distance and
+line-of-sight velocity at late times, despite poorer agreement with the other
+dimensions.  This is shown in Figure~\ref{fig:vel_v_dist}.
 
 \begin{figure}
-    \centering 
-    \includegraphics[width=0.9\linewidth]{figs/equatorial_progenitor_coords_unwrapped.pdf}
+    \centering
+    \includegraphics[width=1.0\linewidth]{figs/vel_v_dist_peri_only.png}
+    \includegraphics[width=1.0\linewidth]{figs/vel_v_dist_zoomed.png}
     \caption{%
-        Trajectory of the simulated Sgr progenitor in terms of positional
-        coordinates only. The orbit is periodic in right ascension, so the
-        coordinates have been ``unwrapped'' to better show the behavior.
-        Observed values of the right ascension, declination, and distance are
-        shown as dashed lines.
+        Line-of-sight velocity versus heliocentric distance for Sgr stellar
+        particles in each merger, colored according to the time at which each
+        particle became unbound from the progenitor. Each merger is given at its
+        fifth pericenter. (Top) The full spread of Sgr stellar particles closer
+        than 140 kpc, with the observed coordinates shown as a blue star.
+        (Bottom) Only the Sgr stellar particles which are close to the observed
+        coordinates; observed coordinates denoted by black error bars.
     }
-    \label{fig:eq_prog_unwrapped}
+    \label{fig:vel_v_dist}
 \end{figure}
 
-We note that the Dierickx 2017 model~\cite{dierickx_predicted_2017} most closely
-approximated the observed coordinates just after its fifth pericenter. We note
-that no snapshot of our model comes as close to these coordinates as theirs, but
-we believe that this discrepancy would be alleviated somewhat by greater time
-resolution in the snapshots of the stream. We do, however, find that the CDM
-mergers attain their closest matches to the distance and radial velocity of Sgr
-just after the fifth pericenter. The SIDM merger, however, attains its closest
-match to the distance and radial velocity after its fourth apocenter. These
-correspond to the specific times of 7.14 Gyr, 7.53 Gyr, and 6.75 Gyr for the
-CDM/cusp, CDM/core, and SIDM mergers respectively.
+The resulting Figure gives a strong indication that the SIDM stream is indeed
+unable to adequately reproduce the observed line-of-sight velocity of Sgr. In
+particular, we note that both CDM mergers display a number of bound (colored
+dark) particles which roughly surround the observed coordinates.  The SIDM
+merger, however, shows that all bound particles either have too small a
+line-of-sight velocity or too large a heliocentric distance to yield the
+observed progenitor coordinates. We note further that this discrepancy is very
+significant with respect to the uncertainties in the measured coordinates.
 
+% \hypertarget{comparison-to-stream-data}{%
+% \section{Comparison to stream data}\label{comparison-to-stream-data}}
 
-\hypertarget{comparison-to-stream-data}{%
-\section{Comparison to stream data}\label{comparison-to-stream-data}}
-
-The last piece of the analysis that we will consider is a comparison to observed
-data.  The data we will compare against comes from the second data release
-(DR2) of the \textit{Gaia}
+The last piece of the analysis that we will consider is a comparison to data
+from the second data release (DR2) of the \textit{Gaia}
 mission~\cite{lindegren_gaia_2018,gaia_collaboration_gaia_2018}, from which Sgr
 stars have been identified by Ibata et al.~\cite{ibata_panoramic_2020} using the
-\verb|STREAMFINDER|
-algorithm~\cite{malhan_streamfinder_2018,malhan_ghostly_2018}. The resulting
+\verb|STREAMFINDER| (hereafter \verb|SF|)
+algorithm~\cite{malhan_streamfinder_2018, malhan_ghostly_2018}.  The resulting
 dataset includes the \textit{Gaia} equatorial coordinates, proper motions,
-magnitudes, and colors of 263,438 stars, along with an estimate of the distance
-provided by the algorithm. They find their dataset to agree well with the Law
-and Majewski 2010 model~\cite{law_sagittarius_2010}, barring a few small
-deviations. The \verb|STREAMFINDER| sample is shown in Figure~\ref{fig:streamfinder}.
+magnitudes, and colors of 263,438 stars, along with an estimate of the
+distance provided by the algorithm.  They find their dataset to agree well
+with the Law 2010 model~\cite{law_sagittarius_2010}, barring a few small
+deviations.  The \verb|SF| sample is shown in
+Figure~\ref{fig:streamfinder}.  We note in particular a very dense region of
+stars at around $\alpha = 280^\circ$, $\delta = -30^\circ$, and heliocentric
+distance $\approx 30$ kpc.  This is the Sagittarius progenitor.
 
 \begin{figure}
     \centering 
     \includegraphics[width=0.7\linewidth]{figs/streamfinder.pdf}
     \caption{%
-        Equatorial coordinates and estimated distances for the 263,438 Sgr
-        stars identified by the \texttt{STREAMFINDER} algorithm.
+        Equatorial coordinates and estimated heliocentric distances for the
+        263,438 Sgr stars identified by the \texttt{STREAMFINDER} algorithm.
     }
     \label{fig:streamfinder}
 \end{figure}
 
-In the Dierickx 2017 model~\cite{dierickx_predicted_2017}, the simulation was
-found to most closely approximate the position of Sgr today at the fifth
-pericenter.  As such, we consider the corresponding times in our mergers.  In
-our mergers, we find the fifth pericenter to occur after 7.0 Gyr in the
-CDM/cusp merger, 7.4 Gyr in the CDM/core merger, and 8.8 Gyr in the SIDM
-merger.
-
-For each merger at the corresponding times, we convert the coordinates of the
-stellar particles into equatorial coordinates in the ICRS frame using the
-Astropy
-package~\cite{astropy_collaboration_astropy_2013,astropy_collaboration_astropy_2018}.
-We only consider stars with distances less than 100 kpc, as this is done
-in~\cite{dierickx_predicted_2017} and the \verb|STREAMFINDER| sample contains no
-stars beyond this threshold.  The resulting coordinates are plotted in
-Figure~\ref{fig:equatorial}, with the \verb|STREAMFINDER| density plot shown
-in gray.
+For each merger, we continue to consider the fifth pericenter as before. We
+again convert to equatorial coordinates, this time using only those stars with a
+heliocentric distance less than 100 kpc, as the \verb|SF| sample
+contains no stars beyond this threshold. The resulting distribution of stars is
+plotted in Figure~\ref{fig:equatorial} with the \verb|SF| density
+shown in gray.
 
 \begin{figure}
     \centering 
@@ -416,82 +422,108 @@ in gray.
     \caption{%
         Equatorial coordinates for our simulated Sgr stellar particles of
         distances less than 100 kpc at the time of the fifth pericenter for
-        each merger.  The position of the progenitor is shown by a black circle.
-        The density of STREAMFINDER stars is also shown in gray.
+        each mergeri, colored by line-of-sight velocity.  The position of the
+        simulated progenitor is shown by a white circle with black outline.
+        (Note that it is located at RA $\approx 0.5^\circ$ in the CDM/core
+        plots.) The observed coordinates of Sgr are shown as a black circle.
+        The density of \texttt{STREAMFINDER} stars is shown in gray.
     }
     \label{fig:equatorial}
 \end{figure}
 
-Our comparison to the \verb|STREAMFINDER| stars shows qualitatively good
-agreement in terms of the right ascension and declination. The thickness of the
-stream appears to be narrower in some places, and our maxmium achieved
-declination is approximately 60$^\circ$ where the \verb|STREAMFINDER| data
-barely exceeds 40$^\circ$. We also see qualitative agreement for the primary
-stream arms in terms of distance, though our stream appears to be shifted
-relative to the \verb|STREAMFINDER| data. Our model also predicts an extension
-to the Sgr stream arms, similar to the results of Dierickx et
-al.~\cite{dierickx_predicted_2017}. 
+Our comparison to the \verb|SF| stars shows qualitatively good agreement in
+terms of the right ascension and declination, as the simulated streams appear
+to reach their maximum and minimum values of declination at the same right
+ascensions as the \verb|SF| stream.  We note that our streams are less thick
+in most areas, perhaps owing to a smaller number of stellar particles.  Our
+streams also reach a greater maximum declination than the \verb|SF| data; this
+discrepancy appears to impact the CDM/cusp merger the least and the SIDM
+merger the most.  The SIDM merger in general appears to have larger
+declination values than expected from data.
 
-There also exist some differences between the three mergers in this frame.
-For example, the CDM/cusp run appears to have more particles with larger
-line-of-sight velocity magnitudes, with more stars that appear to be dark blue
-and red.  Inversely, the SIDM merger appears to have much more limited
-variation in line-of-sight velocity.  Also, the SIDM and CDM runs appear to
-have different features which are well-defined; the CDM runs show a rising
-stream arm at right ascension $\approx 350^\circ$ that is not well-represented
-in the SIDM run.  The SIDM run, however, has a more well-defined falling
-stream arm at right ascension $\approx 200^\circ$.
+When looking at the distribution of heliocentric distances, we note relatively
+good agreement for right ascensions larger than $200^\circ$ in the CDM cases.
+For smaller right ascensions, we do see the reproduction of the stream arm, but
+shifted slightly toward larger right ascensions. This effect appears to be
+less present in the CDM/core case. The SIDM merger also appears to reproduce the
+stream arm for smaller right ascension, but is substantially less accurate at
+reproducing that of larger right ascensions, with the whole of the stream
+appearing to be shifted up by roughly $60^\circ$. The heliocentric distance
+distribution also shows the predicted extensions to the leading and trailing
+stream arms from the Dierickx model. 
 
-To more fully explore these distances, we can look at histograms of the stellar
-particles' equatorial coordinates and proper motions and compare to the same for
-the \verb|STREAMFINDER| stars. We note, however, the presence of a very dense
-region of stars in the \verb|STREAMFINDER| data at $\text{RA} = 290^\circ$,
-$\text{Dec} = -30^\circ$, and $\text{dist} = 30$ kpc. This greatly skews the
-\verb|STREAMFINDER| distributions, so we cut it off in the plots in order to
-more fully elucidate the simulation distributions. The resulting histograms may
-be seen in Figure~\ref{fig:eq_hists}.
+When plotted in these coordinates, we can also discern some differences between
+the mergers themselves. As an example, we can again see a marked difference in
+the distribution of line-of-sight velocities, as the CDM mergers both show a
+rather significant number of stars with large, positive line-of-sight
+velocities (in the orange-red region of the colormap). The SIDM merger, by
+contrast, has very few such stars, preferring smaller velocities. Unfortunately,
+the \verb|SF| dataset does not come with radial velocities, but the authors note
+that the radial velocities of 2984 of the stars can be found in public
+spectroscopic studies. Future studies would do well to compare the distributions
+of radial velocities in simulations like ours with the radial velocities of
+those stars.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.9\linewidth]{figs/equatorial_hists.pdf}
-    \caption{%
-        Histograms of the equatorial coordinates and proper motions of the
-        simulated stellar particles closer than 100 kpc and the reference
-        \texttt{STREAMFINDER} stars (where possible).  Note that the
-        \texttt{STREAMFINDER} sample contains a very dense region which is
-        intentionally cut off in the right ascension, declination, and
-        distance plots in order to better see the simulated distributions.
-        All distributions are normalized to unity.
-    }
-    \label{fig:eq_hists}
-\end{figure}
+% There also exist some differences between the three mergers in this frame.
+% For example, the CDM/cusp run appears to have more particles with larger
+% line-of-sight velocity magnitudes, with more stars that appear to be dark blue
+% and red.  Inversely, the SIDM merger appears to have much more limited
+% variation in line-of-sight velocity.  Also, the SIDM and CDM runs appear to
+% have different features which are well-defined; the CDM runs show a rising
+% stream arm at right ascension $\approx 350^\circ$ that is not well-represented
+% in the SIDM run.  The SIDM run, however, has a more well-defined falling
+% stream arm at right ascension $\approx 200^\circ$.
 
-The histograms show us that the distributions of simulated stars are quite
-different than the \verb|STREAMFINDER| sample, particularly when we consider
-the proper motions and distances. Specifically, the $\mu_\alpha \cos\delta$
-distribution is largely concentrated between $-1$ and $0.5$ mas/yr for all
-three mergers, but appears to be a roughly unimodal distribution at $-2.5$
-mas/yr in the \verb|STREAMFINDER| data.  Similarly, all three mergers show a
-strong peak in $\mu_\delta$ at approximately $-0.5$ mas/yr, compared to the
-strong peak at $-1.5$ mas/yr in the \verb|STREAMFINDER| set. In the distance
-distribution, we see the distribution of distances appear to rise until around
-60 to 80 kpc, compared to the sharp peak around 30 kpc in the
-\verb|STREAMFINDER| set with a decreasing frequency for larger distances.
+% To more fully explore these distances, we can look at histograms of the stellar
+% particles' equatorial coordinates and proper motions and compare to the same for
+% the \verb|STREAMFINDER| stars. We note, however, the presence of a very dense
+% region of stars in the \verb|STREAMFINDER| data at $\text{RA} = 290^\circ$,
+% $\text{Dec} = -30^\circ$, and $\text{dist} = 30$ kpc. This greatly skews the
+% \verb|STREAMFINDER| distributions, so we cut it off in the plots in order to
+% more fully elucidate the simulation distributions. The resulting histograms may
+% be seen in Figure~\ref{fig:eq_hists}.
 
-The declination plot shows the existence of peaks around $-30^\circ$ to
-$-40^\circ$ for all mergers and the \verb|STREAMFINDER| set. However, the
-mergers \textit{also} have a peak at around $+20^\circ$ that appears to be
-largely non-existent in \verb|STREAMFINDER|.  Lastly, we note that the right
-ascension plot shows some similarities between all mergers and the
-\verb|STREAMFINDER|: particularly, a peak at around $225^\circ$ and a trough
-at around $140^\circ$.
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=0.9\linewidth]{figs/equatorial_hists.pdf}
+%     \caption{%
+%         Histograms of the equatorial coordinates and proper motions of the
+%         simulated stellar particles closer than 100 kpc and the reference
+%         \texttt{STREAMFINDER} stars (where possible).  Note that the
+%         \texttt{STREAMFINDER} sample contains a very dense region which is
+%         intentionally cut off in the right ascension, declination, and
+%         distance plots in order to better see the simulated distributions.
+%         All distributions are normalized to unity.
+%     }
+%     \label{fig:eq_hists}
+% \end{figure}
 
-The histograms also allow us to highlight some differences between the mergers
-themselves. In particular, the radial velocity histogram confirms the previously
-noted trend. The CDM/cusp merger appears to have more particles with higher
-radial velocity magnitudes than either of the other runs. The CDM/core merger
-appears to have a much flatter distribution of radial velocities than either of
-the other two mergers. The SIDM merger, on the other hand, has a strongly
-bimodal distribution of radial velocities, with strong peaks around $+100$ and
-$-150$ km/s.
+% The histograms show us that the distributions of simulated stars are quite
+% different than the \verb|STREAMFINDER| sample, particularly when we consider
+% the proper motions and distances. Specifically, the $\mu_\alpha \cos\delta$
+% distribution is largely concentrated between $-1$ and $0.5$ mas/yr for all
+% three mergers, but appears to be a roughly unimodal distribution at $-2.5$
+% mas/yr in the \verb|STREAMFINDER| data.  Similarly, all three mergers show a
+% strong peak in $\mu_\delta$ at approximately $-0.5$ mas/yr, compared to the
+% strong peak at $-1.5$ mas/yr in the \verb|STREAMFINDER| set. In the distance
+% distribution, we see the distribution of distances appear to rise until around
+% 60 to 80 kpc, compared to the sharp peak around 30 kpc in the
+% \verb|STREAMFINDER| set with a decreasing frequency for larger distances.
+
+% The declination plot shows the existence of peaks around $-30^\circ$ to
+% $-40^\circ$ for all mergers and the \verb|STREAMFINDER| set. However, the
+% mergers \textit{also} have a peak at around $+20^\circ$ that appears to be
+% largely non-existent in \verb|STREAMFINDER|.  Lastly, we note that the right
+% ascension plot shows some similarities between all mergers and the
+% \verb|STREAMFINDER|: particularly, a peak at around $225^\circ$ and a trough
+% at around $140^\circ$.
+
+% The histograms also allow us to highlight some differences between the mergers
+% themselves. In particular, the radial velocity histogram confirms the previously
+% noted trend. The CDM/cusp merger appears to have more particles with higher
+% radial velocity magnitudes than either of the other runs. The CDM/core merger
+% appears to have a much flatter distribution of radial velocities than either of
+% the other two mergers. The SIDM merger, on the other hand, has a strongly
+% bimodal distribution of radial velocities, with strong peaks around $+100$ and
+% $-150$ km/s.
 
