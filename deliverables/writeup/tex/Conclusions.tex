@@ -1,0 +1,77 @@
+\hypertarget{conclusions}{%
+\chapter{Conclusions}\label{conclusions}}
+
+% highlighting future to-dos and refinements, and identifying one or two key
+% observations that should be pursued more carefully
+
+In this work, we have presented a novel test of self-interacting dark matter
+models by studying simulations of the infall of the Sagittarius dwarf
+spheroidal galaxy.  Following the Dierickx 2017~\cite{dierickx_predicted_2017}
+model, we have performed three simulations of the infall of Sgr.  Two of these
+used the CDM model, one using initially cuspy halos and the other using cored
+halos.  The third used the SIDM model, starting from cored halo profiles and
+assuming a cross section of $\sigma/m = 10$ cm$^2$/g.
+
+In our analysis of the resulting evolutions, we found that all three develop a
+strong, streamlike shape.  The inclusion of self-interactions, however,
+changes the shape dramatically, seemingly changing the overall rotation of the
+outer stream arms and causing the loss of the intricate inner structure seen
+in both CDM simulations.  In general, it appears that the SIDM simulation was
+significantly more susceptible to the effects of tidal stripping.
+
+Comparisons to existing Sgr data show generally good agreement especially with
+our CDM streams.  For example, the stream shape seen in
+\verb|STREAMFINDER| \cite{ibata_panoramic_2020} data is reproduced quite
+faithfully in equatorial coordinates with similar distributions in
+heliocentric distance.  Our mergers also show the predicted extension to the
+stream introduced by the Dierickx 2017 model.  The SIDM stream, while
+qualitatively similar to the \verb|STREAMFINDER| shape, shows the poorest
+agreement of our three simulations with significantly larger declinations than
+expected.  Similar findings were shown with a comparison to the right
+ascension and declination data of M-giant stars from
+2MASS~\cite{majewski_two_2003}.
+
+Moreover, the resulting SIDM progenitor is much slower than either of the CDM
+progenitors.  Its orbital time lags significantly, with the SIDM progenitor
+reaching its fifth pericentric passage \textit{after} the cuspy CDM progenitor
+is able to reach its sixth.  This, we believe, is intimately tied to
+significantly smaller line-of-sight velocities at late times.  The SIDM
+progenitor is in fact \textit{not} able to reproduce the observed heliocentric
+distance and line-of-sight velocity of the Sgr progenitor at later times when
+the stream is sufficiently developed in our simulation. Similarly, the SIDM
+stream gives the least accurate reproduction of the heliocentric distance and
+line-of-sight velocities of the 2MASS data.
+
+These findings suggest that line-of-sight velocity in particular may serve as
+an important discriminator for the existence of dark matter self-interaction.
+However, there are many caveats with our findings that must be more thoroughly
+examined in future studies. The first and most obvious is that we have only
+considered a single, large, velocity-independent cross section of $\sigma / m =
+10$ cm$^2$/g. Future studies should consider a wider range of cross sections, in
+particular those close to 1 cm$^2$/g, and should consider adding
+velocity-dependence to better match observational constraints. 
+
+The next caveat is that we have only considered initial simulation parameters
+(such as the initial position and velocity of Sgr) which were derived as
+best-fit parameters for a CDM simulation. However, the optimal description of
+the Sgr orbital history with SIDM likely differs from that of the CDM
+description.  As such, the development of a semi-analytic model to explore a
+wider range of parameters, as was done in~\cite{dierickx_predicted_2017}, would
+help to identify such parameters and reduce any differences caused by this.
+
+Future studies would also do well to improve the resolution of these
+simulations.  Saving snapshots of the simulation at smaller time intervals
+would significantly improve the ability to match the progenitor coordinates to
+observation, which is currently time resolution-limited.  Using more stellar
+particles would also likely improve the details in the resulting streams.  We
+note further that the inclusion of a bulge in the galaxy profiles and the use
+of other progenitor-identifying algorithms would be greatly helpful for more
+accurately describing the trajectory of the simulated progenitors.
+
+We note finally that the compilation of radial velocity data for more stars in
+the Sgr stream would largely improve the comparisons we make with our mergers.
+The \verb|STREAMFINDER| team note that nearly 3,000 stars in their stream have
+radial velocity information in other public surveys; a compilation of these
+data would help expand the comparisons that were made at the end of this work
+and confirm whether the velocity distributions seen in our models are
+observed.
