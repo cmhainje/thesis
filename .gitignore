@@ -1,10 +1,12 @@
 *.DS_Store
 .ipynb_checkpoints/*
 __pycache__/*
+.vscode/*
 deliverables/declaration.pdf
 
 */.ipynb_checkpoints/*
 */__pycache__/*
+*/.vscode/*
 *.aux
 *.fdb_latexmk
 *.fls
@@ -14,4 +16,5 @@ deliverables/declaration.pdf
 
 */slurm-*
 
-simulation/*/*/output
+sim/gizmo.param
+make_mergers.sh
